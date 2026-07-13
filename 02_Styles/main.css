@@ -597,6 +597,41 @@ p  { line-height: var(--lh-loose); }
 .badge--coral  { background: rgba(255,107,107,.12); color: var(--c-coral-dark); }
 .badge--purple { background: rgba(124,58,237,.10); color: var(--c-purple); }
 
+/* ── Difficulty Toggle ────────────────────────────────────── */
+.difficulty-toggle {
+  display: flex;
+  justify-content: center;
+  background: rgba(255,255,255,0.7);
+  border-radius: 999px;
+  padding: 6px;
+  box-shadow: var(--sh-sm);
+  max-width: 600px;
+  margin: 0 auto var(--sp-2);
+  border: 2px solid var(--c-border);
+  gap: 4px;
+}
+.diff-btn {
+  flex: 1;
+  padding: 12px 24px;
+  border-radius: 999px;
+  border: none;
+  font-weight: var(--fw-bold);
+  font-size: clamp(0.85rem, 2.5vw, 1.1rem);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--c-deep-blue);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+.diff-btn.active {
+  background: var(--c-bright-blue);
+  color: white;
+  box-shadow: 0 4px 10px rgba(58,134,255,0.3);
+}
+
 /* ── Animations ───────────────────────────────────────────── */
 @keyframes fadeInUp {
   from { opacity: 0; transform: translateY(20px); }

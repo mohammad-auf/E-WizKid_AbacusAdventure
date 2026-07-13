@@ -299,7 +299,7 @@
   background: linear-gradient(180deg, #94A3B8, #64748B); /* Light grey */
   border-color: rgba(255,255,255,0.2);
   box-shadow: none;
-  opacity: 0.8;
+  opacity: 1;
 }
 
 /* Bead active (pushed toward beam) */
