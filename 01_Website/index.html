@@ -1,0 +1,542 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="E-Wiz Kid Abacus Adventure – an interactive educational game that teaches children counting, place value, addition, subtraction, and number patterns using a digital abacus." />
+  <meta name="theme-color" content="#3A86FF" />
+  <meta property="og:title"       content="E-Wiz Kid | Abacus Adventure" />
+  <meta property="og:description" content="Move the beads, solve the challenge, and earn stars!" />
+  <meta property="og:type"        content="website" />
+  <title>E-Wiz Kid | Abacus Adventure</title>
+  <link rel="stylesheet" href="../02_Styles/main.css" />
+  <link rel="stylesheet" href="../02_Styles/responsive.css" />
+  <style>
+    /* ── Home Screen Specific ─────────────────────────────── */
+    .home-body {
+      background: linear-gradient(160deg, #EEF6FF 0%, #F0F6FF 40%, #FFF8F0 100%);
+      min-height: 100dvh;
+    }
+
+    /* Hero Section */
+    .hero {
+      padding: var(--sp-12) 0 var(--sp-16);
+    }
+    .hero__layout {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-12);
+    }
+    .hero__illustration {
+      flex-shrink: 0;
+      position: relative;
+    }
+    .hero__illustration-inner {
+      position: relative;
+      animation: float 3.5s ease-in-out infinite;
+    }
+
+    /* Mascot placeholder (child character from wireframe) */
+    .mascot {
+      width: 300px;
+      height: 340px;
+      position: relative;
+    }
+    .mascot-body {
+      width: 300px;
+      height: 340px;
+      background: linear-gradient(160deg, #E8F4FF, #D0E8FF);
+      border-radius: 50% 50% 44% 44%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      box-shadow: var(--sh-xl);
+      overflow: hidden;
+    }
+    .mascot-body::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 40%;
+      background: linear-gradient(0deg, rgba(25,73,109,.06), transparent);
+    }
+    /* Big E letter in mascot */
+    .mascot-letter {
+      font-size: 10rem;
+      font-weight: var(--fw-xblk);
+      background: linear-gradient(135deg, var(--c-bright-blue), var(--c-purple));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      user-select: none;
+      display: inline-block;
+      animation: float 4s ease-in-out infinite;
+    }
+    /* Scattered math symbols decoration */
+    .mascot-deco {
+      position: absolute;
+      font-size: 1.5rem;
+      opacity: 0.6;
+      pointer-events: none;
+    }
+    .mascot-deco:nth-child(1) { top: 10%; left: -15%; animation: float 4s ease infinite; }
+    .mascot-deco:nth-child(2) { top: 25%; right: -18%; animation: float 3s ease .5s infinite; }
+    .mascot-deco:nth-child(3) { bottom: 20%; left: -12%; animation: float 3.8s ease 1s infinite; }
+    .mascot-deco:nth-child(4) { bottom: 30%; right: -15%; animation: float 4.2s ease .3s infinite; }
+
+    /* Abacus badge on the illustration */
+    .hero-abacus-badge {
+      position: absolute;
+      top: -20px;
+      right: -20px;
+      background: var(--c-white);
+      border-radius: var(--r-xl);
+      padding: var(--sp-3);
+      box-shadow: var(--sh-lg);
+      border: 2px solid var(--c-border);
+    }
+    .hero-abacus-badge svg {
+      width: 80px;
+      height: 50px;
+    }
+
+    /* Hero Content */
+    .hero__content {
+      flex: 1;
+      max-width: 520px;
+    }
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--c-bright-blue);
+      background: rgba(58,134,255,.1);
+      border: 1px solid rgba(58,134,255,.2);
+      border-radius: var(--r-full);
+      padding: var(--sp-1) var(--sp-3);
+      margin-bottom: var(--sp-4);
+      letter-spacing: 0.04em;
+    }
+    .hero__title {
+      font-size: clamp(2.5rem, 6vw, 4rem);
+      font-weight: var(--fw-xblk);
+      color: var(--c-deep-blue);
+      line-height: var(--lh-tight);
+      margin-bottom: var(--sp-4);
+      letter-spacing: -0.02em;
+    }
+    .hero__title .accent {
+      color: var(--c-bright-blue);
+      position: relative;
+      display: inline-block;
+    }
+    .hero__subtitle {
+      font-size: var(--fs-lg);
+      color: var(--c-text-light);
+      line-height: var(--lh-loose);
+      margin-bottom: var(--sp-8);
+      max-width: 42ch;
+    }
+    .hero__actions {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-3);
+      max-width: 340px;
+    }
+
+    /* Feature pills */
+    .hero-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      margin-top: var(--sp-8);
+    }
+    .hero-feature {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-semi);
+      color: var(--c-text-light);
+      background: rgba(255,255,255,.8);
+      border: 1.5px solid var(--c-border);
+      border-radius: var(--r-full);
+      padding: var(--sp-2) var(--sp-4);
+      backdrop-filter: blur(4px);
+    }
+    .hero-feature svg { width: 16px; height: 16px; }
+
+    /* Activities preview strip */
+    .activities-strip {
+      padding: var(--sp-12) 0;
+      overflow: hidden;
+    }
+    .activities-strip__title {
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-black);
+      color: var(--c-deep-blue);
+      text-align: center;
+      margin-bottom: var(--sp-8);
+    }
+    .activities-mini-grid {
+      display: grid;
+      /* Columns handled by responsive.css: repeat(2→3→5, 1fr) */
+      gap: var(--sp-4);
+    }
+
+    .activity-mini-card {
+      background: var(--c-white);
+      border-radius: var(--r-xl);
+      padding: var(--sp-5) var(--sp-4);
+      text-align: center;
+      border: 1.5px solid var(--c-border);
+      box-shadow: var(--sh-card);
+      cursor: pointer;
+      transition:
+        transform   var(--dur-normal) var(--ease-spring),
+        box-shadow  var(--dur-normal) var(--ease);
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-3);
+    }
+    .activity-mini-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--sh-lg);
+    }
+    .activity-mini-card__icon {
+      width: 72px;
+      height: 72px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: var(--sh-sm);
+    }
+    .activity-mini-card__icon svg { width: 40px; height: 40px; }
+    .activity-mini-card__name {
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-black);
+      color: var(--c-deep-blue);
+      line-height: var(--lh-snug);
+    }
+    /* Color variants */
+    .icon-bg--green  { background: linear-gradient(135deg, #64D37A, #38A95A); }
+    .icon-bg--blue   { background: linear-gradient(135deg, #6BA6FF, #2563EB); }
+    .icon-bg--purple { background: linear-gradient(135deg, #B57BFF, #7C3AED); }
+    .icon-bg--yellow { background: linear-gradient(135deg, #FFD166, #F4B942); }
+    .icon-bg--coral  { background: linear-gradient(135deg, #FF8585, #E53E3E); }
+    /* White icon versions */
+    .activity-mini-card__icon svg path,
+    .activity-mini-card__icon svg circle,
+    .activity-mini-card__icon svg rect,
+    .activity-mini-card__icon svg line {
+      stroke: white !important;
+    }
+    .activity-mini-card__icon svg [fill]:not([fill="none"]) {
+      fill: rgba(255,255,255,0.2) !important;
+    }
+
+    /* How to play callout */
+    .how-to-strip {
+      padding: var(--sp-8) 0 var(--sp-16);
+    }
+    .how-to-card {
+      background: linear-gradient(135deg, var(--c-deep-blue), #0F2D45);
+      border-radius: var(--r-2xl);
+      padding: var(--sp-10) var(--sp-12);
+      color: var(--c-white);
+      display: flex;
+      align-items: center;
+      gap: var(--sp-10);
+      overflow: hidden;
+      position: relative;
+    }
+    .how-to-card::before {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 240px; height: 240px;
+      background: rgba(255,255,255,.04);
+      border-radius: 50%;
+    }
+    .how-to-card::after {
+      content: '';
+      position: absolute;
+      bottom: -80px; left: 20%;
+      width: 300px; height: 300px;
+      background: rgba(58,134,255,.08);
+      border-radius: 50%;
+    }
+    .how-to-card__text { flex: 1; position: relative; z-index: 1; }
+    .how-to-card__eyebrow {
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--c-yellow);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: var(--sp-3);
+    }
+    .how-to-card__title {
+      font-size: var(--fs-3xl);
+      font-weight: var(--fw-xblk);
+      line-height: var(--lh-tight);
+      margin-bottom: var(--sp-3);
+    }
+    .how-to-card__desc {
+      font-size: var(--fs-md);
+      color: rgba(255,255,255,.75);
+      line-height: var(--lh-loose);
+      max-width: 40ch;
+    }
+    .how-to-card__action { position: relative; z-index: 1; flex-shrink: 0; }
+    .btn--white {
+      background: var(--c-white);
+      color: var(--c-deep-blue);
+      font-weight: var(--fw-black);
+      box-shadow: 0 4px 20px rgba(0,0,0,.2);
+    }
+    .btn--white:hover {
+      background: var(--c-cream);
+      box-shadow: 0 6px 24px rgba(0,0,0,.28);
+      transform: translateY(-2px);
+    }
+  </style>
+</head>
+<body class="home-body">
+
+  <!-- Page background decoration -->
+  <div class="page-bg" aria-hidden="true">
+    <div class="page-bg__circle page-bg__circle--1"></div>
+    <div class="page-bg__circle page-bg__circle--2"></div>
+    <div class="page-bg__circle page-bg__circle--3"></div>
+  </div>
+
+  <!-- Skip Navigation -->
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── Site Header ─────────────────────────────────────── -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="E-Wiz Kid home">
+        <div class="logo-badge" aria-hidden="true">
+          <!-- Mini abacus icon from brand SVG -->
+          <svg width="28" height="28" viewBox="0 0 142 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFD166" stroke-width="8" stroke-linecap="round">
+              <line x1="10" y1="22" x2="132" y2="22"/>
+              <line x1="10" y1="70" x2="132" y2="70"/>
+              <line x1="10" y1="118" x2="132" y2="118"/>
+            </g>
+            <circle cx="40" cy="22" r="14" fill="#FF6B6B" stroke="white" stroke-width="3"/>
+            <circle cx="78" cy="22" r="14" fill="#3A86FF" stroke="white" stroke-width="3"/>
+            <circle cx="40" cy="70" r="14" fill="#55C271" stroke="white" stroke-width="3"/>
+            <circle cx="78" cy="70" r="14" fill="#FF6B6B" stroke="white" stroke-width="3"/>
+            <circle cx="116" cy="70" r="14" fill="#3A86FF" stroke="white" stroke-width="3"/>
+            <circle cx="60" cy="118" r="14" fill="#FFD166" stroke="white" stroke-width="3"/>
+            <circle cx="98" cy="118" r="14" fill="#55C271" stroke="white" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-text__name">E-Wiz Kid</span>
+          <span class="logo-text__sub">Abacus Adventure</span>
+        </div>
+      </a>
+
+      <nav class="site-header__nav" role="navigation" aria-label="Primary navigation">
+        <a href="index.html"    class="nav-link" aria-current="page">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          Home
+        </a>
+        <a href="activity-selection.html" class="nav-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Activities
+        </a>
+        <a href="help.html"     class="nav-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Help
+        </a>
+      </nav>
+
+      <div class="site-header__controls">
+        <button class="sound-btn" id="sound-toggle" aria-label="Toggle sound" aria-pressed="true" title="Toggle sound">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/>
+            <path d="M19.07 4.93a10 10 0 010 14.14"/>
+            <path d="M15.54 8.46a5 5 0 010 7.07"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ── Main Content ────────────────────────────────────── -->
+  <main id="main-content" role="main">
+
+    <!-- Hero Section -->
+    <section class="hero section" aria-labelledby="hero-title">
+      <div class="container">
+        <div class="hero__layout" style="display: flex; flex-direction: column; align-items: center; text-align: center; gap: var(--sp-6); margin-top: 5vh;">
+          
+          <!-- Logo & Title Area -->
+          <div class="hero__header anim-fade-in-up">
+            <!-- Inline Abacus Logo -->
+            <div style="margin: 0 auto var(--sp-4); width: 120px; height: 120px; background: linear-gradient(135deg, #19496D, #13334C); border-radius: 24px; padding: 16px; box-shadow: var(--sh-lg); border: 4px solid #fff;">
+              <svg viewBox="0 0 142 90" width="100%" height="100%" xmlns="http://www.w3.org/2000/svg">
+                <g stroke="#FFD166" stroke-width="8" stroke-linecap="round">
+                  <line x1="28" y1="22" x2="114" y2="22"/>
+                  <line x1="28" y1="50" x2="114" y2="50"/>
+                  <line x1="28" y1="78" x2="114" y2="78"/>
+                </g>
+                <circle cx="52" cy="22" r="12" fill="#FF6B6B" stroke="white" stroke-width="2"/>
+                <circle cx="80" cy="22" r="12" fill="#3A86FF" stroke="white" stroke-width="2"/>
+                <circle cx="42" cy="50" r="12" fill="#55C271" stroke="white" stroke-width="2"/>
+                <circle cx="70" cy="50" r="12" fill="#FF6B6B" stroke="white" stroke-width="2"/>
+                <circle cx="60" cy="78" r="12" fill="#FFD166" stroke="white" stroke-width="2"/>
+              </svg>
+            </div>
+            
+            <h1 class="hero__title" style="font-size: clamp(3rem, 8vw, 5.5rem); letter-spacing: 2px; color: #55C271; -webkit-text-stroke: 4px #19496D; text-shadow: 0 4px 0 #19496D, 0 8px 16px rgba(0,0,0,0.2); margin-bottom: 0;">
+              E-Wiz Kid<br>
+              <span style="color: #fff; -webkit-text-stroke: 4px #19496D;">Abacus Adventure</span>
+            </h1>
+            <p class="hero__subtitle" style="font-size: var(--fs-xl); color: var(--c-deep-blue); font-weight: var(--fw-bold); margin-top: var(--sp-4);">
+              Move the beads, solve the challenge, and earn stars!
+            </p>
+          </div>
+
+          <!-- Action Buttons -->
+          <div class="hero__actions" style="display: flex; flex-direction: row; gap: var(--sp-4); flex-wrap: wrap; justify-content: center; align-items: center; max-width: 100%;">
+            <a href="activity-selection.html" class="btn btn--primary btn--lg anim-pop" style="background: var(--c-bright-blue); border-radius: 999px; font-size: 1.4rem; padding: 1rem 2rem; border: 3px solid #fff; box-shadow: 0 6px 0 #2A75E5, 0 10px 20px rgba(0,0,0,0.15);" id="start-btn">
+              🚀 Start Adventure
+            </a>
+            <button class="btn btn--outline btn--lg anim-pop" style="animation-delay: 200ms; background: var(--c-yellow); color: #fff; border-color: #fff; border-radius: 999px; font-size: 1.4rem; padding: 1rem 2rem; border: 3px solid #fff; box-shadow: 0 6px 0 #E5A800, 0 10px 20px rgba(0,0,0,0.15);" id="continue-btn">
+              ▶ Continue
+            </button>
+            <a href="help.html" class="btn btn--ghost btn--lg anim-pop" style="animation-delay: 400ms; background: #fff; color: var(--c-deep-blue); border-radius: 999px; font-size: 1.4rem; padding: 1rem 2rem; border: 3px solid var(--c-deep-blue); box-shadow: 0 6px 0 var(--c-border), 0 10px 20px rgba(0,0,0,0.15);" id="help-btn">
+              ❓ How to Play
+            </a>
+          </div>
+
+            <!-- Feature pills -->
+            <div class="hero-features" aria-label="Game features">
+              <span class="hero-feature">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-green)" stroke-width="2.5" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+                5 Activities
+              </span>
+              <span class="hero-feature">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-yellow)" stroke-width="2.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                Earn Stars
+              </span>
+              <span class="hero-feature">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-bright-blue)" stroke-width="2.5" aria-hidden="true"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                No Account Needed
+              </span>
+              <span class="hero-feature">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--c-coral)" stroke-width="2.5" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                Child Safe
+              </span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Activities Preview Strip -->
+    <section class="activities-strip" aria-labelledby="activities-preview-title">
+      <div class="container">
+        <p class="activities-strip__title" id="activities-preview-title">Choose Your Math Adventure</p>
+        <div class="activities-mini-grid" role="list">
+
+          <a href="activity-selection.html?activity=number_garden" class="activity-mini-card anim-fade-in-up anim-delay-1" role="listitem" aria-label="Number Garden – Build numbers">
+            <div class="activity-mini-card__icon icon-bg--green" aria-hidden="true">
+              <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                <path d="M34 54 C18 34 29 10 50 13 C55 28 50 44 34 54 Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="7" stroke-linejoin="round"/>
+                <path d="M45 67 C57 45 86 43 98 61 C85 78 63 83 45 67 Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="7" stroke-linejoin="round"/>
+                <path d="M42 58 C52 66 59 74 62 91" fill="none" stroke="rgba(255,255,255,0.8)" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="activity-mini-card__name">Number Garden</span>
+          </a>
+
+          <a href="activity-selection.html?activity=addition_bridge" class="activity-mini-card anim-fade-in-up anim-delay-2" role="listitem" aria-label="Addition Bridge – Add numbers">
+            <div class="activity-mini-card__icon icon-bg--blue" aria-hidden="true">
+              <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 80 Q58 24 104 80 M20 80 H100 M60 28 V67 M44 47 H76" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <span class="activity-mini-card__name">Addition Bridge</span>
+          </a>
+
+          <a href="activity-selection.html?activity=subtraction_cave" class="activity-mini-card anim-fade-in-up anim-delay-3" role="listitem" aria-label="Subtraction Cave – Subtract numbers">
+            <div class="activity-mini-card__icon icon-bg--purple" aria-hidden="true">
+              <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 91 Q24 29 60 20 Q96 29 108 91 Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M39 91 Q46 59 60 53 Q74 59 81 91" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.8)" stroke-width="7" stroke-linecap="round"/>
+                <path d="M39 42 H81" stroke="rgba(255,255,255,0.7)" stroke-width="6" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="activity-mini-card__name">Subtraction Cave</span>
+          </a>
+
+          <a href="activity-selection.html?activity=place_value_tower" class="activity-mini-card anim-fade-in-up anim-delay-4" role="listitem" aria-label="Place Value Tower – Explore place values">
+            <div class="activity-mini-card__icon icon-bg--yellow" aria-hidden="true">
+              <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 100 H102 V87 H89 V59 H75 V35 H59 V59 H45 V87 H18 Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                <path d="M28 72 H40 M52 72 H64 M76 72 H88" stroke="rgba(255,255,255,0.8)" stroke-width="5" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <span class="activity-mini-card__name">Place Value Tower</span>
+          </a>
+
+          <a href="activity-selection.html?activity=pattern_train" class="activity-mini-card anim-fade-in-up anim-delay-5" role="listitem" aria-label="Pattern Train - Number sequences">
+            <div class="activity-mini-card__icon icon-bg--coral" aria-hidden="true">
+              <svg viewBox="0 0 120 120" width="44" height="44" xmlns="http://www.w3.org/2000/svg">
+                <path d="M14 75 H79 V42 H49 V25 H81 L101 44 V75 H108 V91 H14 Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                <circle cx="38" cy="75" r="11" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="5"/>
+                <circle cx="82" cy="75" r="11" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="5"/>
+              </svg>
+            </div>
+            <span class="activity-mini-card__name">Pattern Train</span>
+          </a>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- How to Play CTA -->
+    <section class="how-to-strip" aria-labelledby="how-to-title">
+      <div class="container">
+        <div class="how-to-card anim-fade-in">
+          <div class="how-to-card__text">
+            <p class="how-to-card__eyebrow">New to the abacus?</p>
+            <h2 class="how-to-card__title" id="how-to-title">Learn How to Play</h2>
+            <p class="how-to-card__desc">Move beads toward the counting side of each rod. Every active bead adds one unit. Ready in 2 minutes!</p>
+          </div>
+          <div class="how-to-card__action">
+            <a href="help.html" class="btn btn--white btn--lg" id="learn-how-btn">
+              <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+              How to Play
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ──────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2024 <a href="index.html">E-Wiz Kid</a> · Bengaluru, India · Educational Technology for Young Learners · Progress saved in your browser only · No personal data collected</p>
+  </footer>
+
+  <script type="module" src="../03_Scripts/app.js?v=10"></script>
+</body>
+</html>
+
+
+

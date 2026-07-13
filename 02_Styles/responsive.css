@@ -1,0 +1,519 @@
+/* ============================================================
+   E-Wiz Kid Abacus Adventure — responsive.css
+   Full mobile-first responsive system (320px → 1440px+)
+   Children-friendly touch targets, playful UI enhancements
+   ============================================================ */
+
+/* ─────────────────────────────────────────────────────────────
+   GLOBAL MOBILE-FIRST BASE  (320px+)
+   Everything starts single-column and scales up.
+   ───────────────────────────────────────────────────────────── */
+
+/* Scale type for smallest screens */
+h1 { font-size: 1.75rem; }
+h2 { font-size: 1.4rem; }
+h3 { font-size: 1.2rem; }
+
+/* Prevent horizontal overflow on all screens */
+html, body { overflow-x: hidden; width: 100%; }
+
+/* ── Header ──────────────────────────────────────────────── */
+.site-header {
+  padding-inline: var(--sp-3);
+  height: auto;
+  min-height: var(--hdr-h);
+}
+.site-header__inner {
+  flex-wrap: wrap;
+  gap: var(--sp-2);
+  padding-block: var(--sp-2);
+}
+.site-header__nav {
+  gap: var(--sp-1);
+  flex-wrap: nowrap;
+}
+.nav-link {
+  font-size: 0.75rem;
+  padding: var(--sp-1) var(--sp-2);
+}
+.nav-link svg { display: none; }
+.logo-text__sub { display: none; }
+.logo-text__name { font-size: var(--fs-base); }
+
+/* ── Hero (Home Page) ────────────────────────────────────── */
+.hero { padding: var(--sp-6) 0 var(--sp-8); }
+.hero__layout { flex-direction: column; gap: var(--sp-6); }
+.hero__content { text-align: center; max-width: 100%; }
+.hero__illustration { max-width: 200px; margin-inline: auto; }
+.mascot { width: 200px; height: 220px; }
+.mascot-body { width: 200px; height: 220px; }
+.mascot-letter { font-size: 6rem; }
+.hero-abacus-badge { top: -10px; right: -10px; padding: var(--sp-2); }
+.hero-abacus-badge svg { width: 60px; height: 40px; }
+.hero__actions {
+  align-items: stretch;
+  max-width: 100%;
+  gap: var(--sp-3);
+}
+.hero__actions .btn { width: 100%; justify-content: center; }
+.hero__title { font-size: clamp(1.8rem, 7vw, 3rem); }
+.hero__subtitle { font-size: var(--fs-base); }
+.hero-features { gap: var(--sp-2); justify-content: center; }
+.hero-feature { font-size: var(--fs-xs); padding: var(--sp-1) var(--sp-3); }
+
+/* ── Activities Mini-Grid (Home) ─────────────────────────── */
+.activities-strip { padding: var(--sp-6) 0; }
+.activities-strip__title { font-size: var(--fs-lg); margin-bottom: var(--sp-5); }
+.activities-mini-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--sp-3);
+}
+.activity-mini-card {
+  padding: var(--sp-4) var(--sp-3);
+  gap: var(--sp-2);
+}
+.activity-mini-card__icon { width: 56px; height: 56px; }
+.activity-mini-card__icon svg { width: 32px; height: 32px; }
+.activity-mini-card__name { font-size: var(--fs-xs); }
+
+/* ── How-to CTA card ─────────────────────────────────────── */
+.how-to-strip { padding: var(--sp-6) 0 var(--sp-10); }
+.how-to-card {
+  flex-direction: column;
+  padding: var(--sp-6) var(--sp-5);
+  gap: var(--sp-5);
+  text-align: center;
+}
+.how-to-card__title { font-size: var(--fs-xl); }
+.how-to-card__action { width: 100%; }
+.how-to-card__action .btn { width: 100%; }
+
+/* ── Activity Selection Page ─────────────────────────────── */
+.activity-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--sp-4);
+}
+.activity-card { border-radius: var(--r-xl); }
+.activity-card__body { padding: var(--sp-5) var(--sp-4); gap: var(--sp-2); }
+.activity-card__icon { width: 72px; height: 72px; }
+.activity-card__icon svg { width: 40px; height: 40px; }
+.activity-card__name { font-size: var(--fs-md); }
+.activity-card__play { font-size: var(--fs-sm); padding: var(--sp-3); }
+.page-header { padding: var(--sp-6) 0 var(--sp-4); }
+.page-header__title { font-size: clamp(1.6rem, 6vw, 2.5rem); }
+.progress-summary {
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+  padding: var(--sp-3) var(--sp-4);
+  margin-top: var(--sp-4);
+}
+.progress-summary__value { font-size: var(--fs-xl); }
+
+/* ── Game Screen ─────────────────────────────────────────── */
+.game-main {
+  min-height: calc(100dvh - 56px);
+  display: flex;
+  flex-direction: column;
+}
+.game-panel--question {
+  grid-area: unset;
+  order: 1;
+  padding: var(--sp-4);
+}
+.game-panel--abacus {
+  grid-area: unset;
+  order: 2;
+  padding: var(--sp-4) var(--sp-3);
+  flex: 1;
+}
+.game-panel--sidebar {
+  grid-area: unset;
+  order: 3;
+  border-left: none;
+  border-top: 1.5px solid var(--c-border);
+  padding: var(--sp-4);
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: var(--sp-3);
+}
+.game-panel--progress {
+  grid-area: unset;
+  order: 4;
+  padding: var(--sp-3) var(--sp-4);
+}
+
+/* Sidebar components in mobile row layout */
+.current-number-display { flex: 1; min-width: 120px; padding: var(--sp-3); }
+.current-number-display__value { font-size: var(--fs-3xl); }
+.game-actions { flex: 2; min-width: 180px; gap: var(--sp-2); }
+.game-actions .btn { padding: var(--sp-3) var(--sp-4); font-size: var(--fs-sm); min-height: 44px; }
+.btn--submit { min-height: 48px; font-size: var(--fs-base); }
+.sidebar-stars { flex: 1; min-width: 80px; }
+
+/* Abacus: bigger beads for touch on mobile */
+.bead { width: 44px; height: 44px; }
+.abacus-frame {
+  border-width: 7px;
+  padding: var(--sp-6) var(--sp-4) var(--sp-4);
+}
+.abacus-rods { gap: var(--sp-4); min-height: 220px; }
+.rod-column__label { font-size: var(--fs-xs); padding: 2px var(--sp-2); }
+
+/* HUD: compact at mobile */
+.game-hud {
+  padding: var(--sp-2) var(--sp-3);
+  gap: var(--sp-2);
+  flex-wrap: nowrap;
+}
+.hud-group { gap: var(--sp-3); }
+.hud-item__value { font-size: var(--fs-lg); }
+.hud-item__label { font-size: 0.6rem; }
+.hud-activity-name { font-size: var(--fs-xs); padding: 2px var(--sp-2); }
+.hud-btn { width: 36px; height: 36px; }
+
+/* Question panel mobile */
+.question-text__prompt { font-size: var(--fs-lg); }
+.question-number-badge { width: 30px; height: 30px; font-size: var(--fs-xs); }
+
+/* Feedback card mobile */
+.feedback-card { padding: var(--sp-8) var(--sp-6); }
+.feedback-icon { font-size: 3rem; }
+.feedback-title { font-size: var(--fs-xl); }
+
+/* Results page mobile */
+.results-card { padding: var(--sp-5) var(--sp-4); }
+
+/* Help page mobile */
+.help-grid { grid-template-columns: 1fr; }
+
+/* Level modal mobile */
+.level-picker {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-3);
+}
+.level-card { width: 100%; padding: var(--sp-4); }
+.modal-panel { padding: var(--sp-5) var(--sp-4); max-width: calc(100vw - 2rem); }
+
+/* ─────────────────────────────────────────────────────────────
+   SMALL PHONES  480px+
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 480px) {
+  h1 { font-size: 2.1rem; }
+  h2 { font-size: 1.7rem; }
+
+  .logo-text__sub { display: block; }
+  .nav-link svg { display: inline-block; }
+  .nav-link { font-size: var(--fs-sm); padding: var(--sp-2) var(--sp-3); }
+
+  /* Hero */
+  .hero__illustration { max-width: 260px; }
+  .mascot { width: 240px; height: 270px; }
+  .mascot-body { width: 240px; height: 270px; }
+
+  /* Activity grid: 2 columns */
+  .activity-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
+
+  /* Mini-grid stays 2 columns until tablet */
+  .activities-mini-grid { grid-template-columns: repeat(2, 1fr); gap: var(--sp-4); }
+  .activity-mini-card__icon { width: 64px; height: 64px; }
+  .activity-mini-card__name { font-size: var(--fs-sm); }
+
+  /* Game sidebar flows better */
+  .current-number-display__value { font-size: var(--fs-2xl); }
+  .bead { width: 48px; height: 48px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   TABLETS  768px+
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 768px) {
+  :root { --gutter: 1.5rem; }
+
+  h1 { font-size: 3rem; }
+  h2 { font-size: 2.25rem; }
+  h3 { font-size: 1.875rem; }
+
+  /* Home hero: side by side */
+  .hero__layout { flex-direction: row; align-items: center; gap: 3rem; }
+  .hero__content { text-align: left; flex: 1; max-width: 520px; }
+  .hero__illustration { flex: 1; max-width: 380px; }
+  .mascot { width: 280px; height: 310px; }
+  .mascot-body { width: 280px; height: 310px; }
+  .mascot-letter { font-size: 8rem; }
+  .hero__actions { align-items: flex-start; max-width: 340px; }
+  .hero__actions .btn { width: auto; }
+  .hero-features { justify-content: flex-start; }
+
+  /* Activities mini-grid: 3 columns at tablet */
+  .activities-mini-grid { grid-template-columns: repeat(3, 1fr); }
+  .activity-mini-card { padding: var(--sp-5) var(--sp-4); }
+  .activity-mini-card__icon { width: 72px; height: 72px; }
+  .activity-mini-card__icon svg { width: 40px; height: 40px; }
+  .activity-mini-card__name { font-size: var(--fs-sm); }
+
+  /* How-to CTA: side by side */
+  .how-to-card {
+    flex-direction: row;
+    text-align: left;
+    padding: var(--sp-8) var(--sp-10);
+    gap: var(--sp-8);
+  }
+  .how-to-card__action { width: auto; }
+  .how-to-card__action .btn { width: auto; }
+
+  /* Activity grid: 3 columns */
+  .activity-grid { grid-template-columns: repeat(3, 1fr); gap: var(--sp-5); }
+  .activity-card__icon { width: 80px; height: 80px; }
+  .activity-card__icon svg { width: 46px; height: 46px; }
+
+  /* Game: side-by-side layout restored */
+  .game-main {
+    display: grid;
+    grid-template-columns: 1fr 300px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "question sidebar"
+      "abacus   sidebar"
+      "progress sidebar";
+    flex-direction: unset;
+    min-height: calc(100dvh - var(--hdr-h));
+  }
+  .game-panel--question  { grid-area: question; order: unset; }
+  .game-panel--abacus    { grid-area: abacus;   order: unset; }
+  .game-panel--progress  { grid-area: progress; order: unset; }
+  .game-panel--sidebar   {
+    grid-area: sidebar;
+    order: unset;
+    flex-direction: column;
+    border-left: 1.5px solid var(--c-border);
+    border-top: none;
+  }
+  .current-number-display { flex: unset; min-width: unset; }
+  .current-number-display__value { font-size: var(--fs-4xl); }
+  .game-actions { flex: unset; min-width: unset; gap: var(--sp-3); }
+  .game-actions .btn { padding: var(--sp-3) var(--sp-5); font-size: var(--fs-base); min-height: 48px; }
+  .sidebar-stars { flex: unset; min-width: unset; }
+
+  /* Beads at normal size */
+  .bead { width: 50px; height: 50px; }
+  .abacus-rods { min-height: 260px; }
+  .abacus-frame { border-width: 10px; padding: var(--sp-8) var(--sp-6) var(--sp-6); }
+
+  /* HUD */
+  .hud-item__value { font-size: var(--fs-xl); }
+  .hud-item__label { font-size: 0.65rem; }
+  .hud-activity-name { font-size: var(--fs-sm); }
+  .hud-btn { width: 40px; height: 40px; }
+  .question-text__prompt { font-size: var(--fs-xl); }
+  .question-number-badge { width: 36px; height: 36px; font-size: var(--fs-sm); }
+
+  /* Help: 2 columns */
+  .help-grid { grid-template-columns: 1fr 1fr; gap: 2rem; }
+
+  /* Level picker in modal: row */
+  .level-picker { flex-direction: row; gap: var(--sp-4); }
+  .level-card { width: auto; flex: 1; }
+  .modal-panel { max-width: 560px; padding: var(--sp-6) var(--sp-8); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LAPTOPS  1024px+
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 1024px) {
+  :root { --gutter: 2rem; }
+
+  /* Activity grid: 5 across */
+  .activity-grid { grid-template-columns: repeat(5, 1fr); gap: 1.5rem; }
+  .activity-card__icon { width: 88px; height: 88px; }
+  .activity-card__icon svg { width: 52px; height: 52px; }
+
+  /* Activities mini-grid: 5 columns */
+  .activities-mini-grid { grid-template-columns: repeat(5, 1fr); }
+
+  /* Game sidebar widens */
+  .game-main { grid-template-columns: 1fr 320px; }
+
+  /* Results card larger */
+  .results-card { padding: 3rem; }
+
+  /* Help: 3 columns */
+  .help-grid { grid-template-columns: 1fr 1fr 1fr; }
+
+  /* Hero */
+  .hero__illustration { max-width: 420px; }
+  .mascot { width: 300px; height: 340px; }
+  .mascot-body { width: 300px; height: 340px; }
+  .mascot-letter { font-size: 9rem; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   WIDE DESKTOPS  1440px+
+   ───────────────────────────────────────────────────────────── */
+@media (min-width: 1440px) {
+  :root { --gutter: 2.5rem; }
+
+  h1 { font-size: 3.75rem; }
+  h2 { font-size: 3rem; }
+
+  .hero__illustration { max-width: 520px; }
+  .game-main { grid-template-columns: 1fr 360px; }
+  .bead { width: 52px; height: 52px; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   LANDSCAPE PHONES  (game screen special case)
+   ───────────────────────────────────────────────────────────── */
+@media (orientation: landscape) and (max-height: 600px) {
+  .hero__illustration { max-width: 200px; }
+  .section { padding-block: 2rem; }
+
+  /* Restore grid layout for landscape phones too */
+  .game-main {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    grid-template-rows: auto 1fr auto;
+    grid-template-areas:
+      "question sidebar"
+      "abacus   sidebar"
+      "progress sidebar";
+    flex-direction: unset;
+    height: 100dvh;
+    overflow: hidden;
+  }
+  .game-panel--question  { grid-area: question; order: unset; }
+  .game-panel--abacus    { grid-area: abacus;   order: unset; padding: var(--sp-3); }
+  .game-panel--progress  { grid-area: progress; order: unset; }
+  .game-panel--sidebar   {
+    grid-area: sidebar;
+    order: unset;
+    flex-direction: column;
+    border-left: 1.5px solid var(--c-border);
+    border-top: none;
+    padding: var(--sp-3);
+  }
+  .bead { width: 38px; height: 38px; }
+  .abacus-rods { min-height: 180px; gap: var(--sp-3); }
+  .current-number-display__value { font-size: var(--fs-2xl); }
+  .game-hud { padding: var(--sp-2); }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   HIGH CONTRAST MODE
+   ───────────────────────────────────────────────────────────── */
+@media (forced-colors: active) {
+  .btn   { border: 2px solid ButtonText; }
+  .card  { border: 2px solid ButtonText; }
+  :focus-visible { outline-color: Highlight; }
+  .bead  { border: 3px solid ButtonText; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   DARK MODE  (OS preference)
+   ───────────────────────────────────────────────────────────── */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --c-bg:           #0D1B2A;
+    --c-surface:      #162535;
+    --c-border:       #1E3A55;
+    --c-text:         #E2EBF6;
+    --c-text-light:   #94AFC8;
+    --c-muted:        #6B8CA8;
+    --c-light-panel:  #1A2D42;
+  }
+
+  .site-header {
+    background: rgba(13,27,42,.92);
+    border-bottom-color: var(--c-border);
+  }
+
+  .card {
+    background: var(--c-surface);
+    border-color: var(--c-border);
+  }
+
+  .btn--outline {
+    background: var(--c-surface);
+    color: var(--c-text);
+  }
+
+  .page-bg__circle { opacity: 0.04; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   PRINT
+   ───────────────────────────────────────────────────────────── */
+@media print {
+  .site-header, .site-footer, .game-controls,
+  .sound-btn, .btn, .page-bg { display: none !important; }
+
+  body { background: white; color: black; }
+  .card { box-shadow: none; border: 1px solid #ccc; }
+  .container { max-width: 100%; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   CHILDREN-FRIENDLY ENHANCEMENTS
+   Bounce animations, playful hover states, bigger touch targets
+   ───────────────────────────────────────────────────────────── */
+
+/* Wiggle on activity card hover */
+@keyframes wiggle {
+  0%,100% { transform: translateY(-6px) rotate(0deg); }
+  25%      { transform: translateY(-8px) rotate(-1.5deg); }
+  75%      { transform: translateY(-8px) rotate(1.5deg); }
+}
+.activity-card:hover {
+  animation: wiggle 0.5s var(--ease-spring);
+}
+
+/* Pop bounce for mini cards */
+@keyframes popBounce {
+  0%,100% { transform: translateY(-4px) scale(1); }
+  50%      { transform: translateY(-8px) scale(1.04); }
+}
+.activity-mini-card:hover {
+  animation: popBounce 0.45s var(--ease-spring);
+}
+
+/* Star pulse animation */
+@keyframes starPop {
+  0%   { transform: scale(1); }
+  40%  { transform: scale(1.4) rotate(-10deg); }
+  70%  { transform: scale(0.9) rotate(5deg); }
+  100% { transform: scale(1) rotate(0deg); }
+}
+.star--filled { animation: starPop 0.5s var(--ease-spring); }
+
+/* Bead glow on active state */
+.bead--active {
+  filter: drop-shadow(0 0 6px rgba(255,255,255,0.5));
+}
+
+/* Bigger, easier-to-tap beads on touch devices */
+@media (pointer: coarse) {
+  .bead { width: 52px; height: 52px; }
+  .abacus-rods { gap: var(--sp-5); }
+  .rod-column__beads { gap: var(--sp-3); }
+  .btn { min-height: 52px; }
+  .game-actions .btn { min-height: 52px; }
+}
+
+/* Fun pill badge on nav for current page */
+.nav-link[aria-current="page"] {
+  background: linear-gradient(135deg, rgba(58,134,255,.15), rgba(58,134,255,.05));
+  color: var(--c-bright-blue);
+  border-radius: var(--r-full);
+  font-weight: var(--fw-black);
+}
+
+/* Activity card footer polish on mobile */
+@media (max-width: 479px) {
+  .activity-card__footer { padding: var(--sp-3) var(--sp-4) var(--sp-4); }
+  .activity-card__stars svg { width: 20px; height: 20px; }
+  .back-link { font-size: var(--fs-xs); }
+  .page-header__subtitle { font-size: var(--fs-sm); }
+  .progress-summary__divider { display: none; }
+}

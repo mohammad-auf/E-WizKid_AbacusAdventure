@@ -1,0 +1,296 @@
+/* ============================================================
+   E-Wiz Kid — level-modal.css
+   Premium "Choose Level" modal & level-card grid
+   ============================================================ */
+
+/* ── Modal Backdrop ─────────────────────────────────────────── */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(10, 22, 40, 0.72);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem;
+  animation: modal-bg-in 250ms cubic-bezier(0.4,0,0.2,1) both;
+}
+@keyframes modal-bg-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── Modal Panel ────────────────────────────────────────────── */
+.modal-panel {
+  background: #ffffff;
+  border-radius: 24px;
+  box-shadow:
+    0 32px 90px rgba(10,22,40,.40),
+    0 4px 16px rgba(10,22,40,.14);
+  width: 100%;
+  max-width: 700px;
+  max-height: 90dvh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  animation: modal-panel-in 300ms cubic-bezier(0.34,1.56,0.64,1) both;
+  position: relative;
+}
+@keyframes modal-panel-in {
+  from { opacity: 0; transform: scale(0.88) translateY(24px); }
+  to   { opacity: 1; transform: scale(1)    translateY(0);    }
+}
+
+/* ── Modal Header ───────────────────────────────────────────── */
+.modal-header {
+  padding: 28px 32px 22px;
+  border-bottom: 1.5px solid #D7E6F5;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.modal-header__icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #EFF6FF, #DBEAFE);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.9rem;
+  line-height: 1;
+  flex-shrink: 0;
+  box-shadow: 0 4px 12px rgba(58,134,255,.18);
+}
+.modal-header__text { flex: 1; padding-top: 2px; }
+.modal-title {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 900;
+  color: #19496D;
+  line-height: 1.2;
+  margin: 0;
+}
+.modal-subtitle {
+  font-size: 0.875rem;
+  color: #475569;
+  margin-top: 4px;
+  line-height: 1.5;
+}
+
+/* ── Close Button ───────────────────────────────────────────── */
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: #EEF2F7;
+  color: #64748B;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  line-height: 1;
+  transition: background 150ms ease, color 150ms ease, transform 250ms cubic-bezier(0.34,1.56,0.64,1);
+}
+.modal-close:hover {
+  background: #FF6B6B;
+  color: white;
+  transform: scale(1.12) rotate(90deg);
+}
+.modal-close:focus-visible {
+  outline: 3px solid #3A86FF;
+  outline-offset: 3px;
+}
+
+/* ── Modal Body ─────────────────────────────────────────────── */
+.modal-body {
+  padding: 28px 32px 32px;
+  overflow-y: auto;
+  flex: 1;
+}
+
+/* ── Modal Footer (actions) ─────────────────────────────────── */
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  padding: 16px 32px;
+  border-top: 1.5px solid #D7E6F5;
+  background: #F7FAFC;
+  justify-content: flex-end;
+}
+
+/* ── Level Picker Grid ──────────────────────────────────────── */
+.level-picker {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.level-card {
+  border: 2.5px solid #D7E6F5;
+  border-radius: 20px;
+  padding: 18px 16px 14px;
+  text-align: center;
+  cursor: pointer;
+  background: #ffffff;
+  transition:
+    transform   250ms cubic-bezier(0.34,1.56,0.64,1),
+    box-shadow  250ms cubic-bezier(0.4,0,0.2,1),
+    border-color 150ms ease;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
+  animation: level-card-in 400ms cubic-bezier(0.34,1.56,0.64,1) both;
+  text-align: left;
+  min-height: 80px;
+}
+.level-card:nth-child(1) { animation-delay:  30ms; }
+.level-card:nth-child(2) { animation-delay:  80ms; }
+.level-card:nth-child(3) { animation-delay: 130ms; }
+.level-card:nth-child(4) { animation-delay: 180ms; }
+.level-card:nth-child(5) { animation-delay: 230ms; }
+
+@keyframes level-card-in {
+  from { opacity: 0; transform: translateY(18px) scale(0.94); }
+  to   { opacity: 1; transform: translateY(0)    scale(1);    }
+}
+
+/* Background wash on hover */
+.level-card::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: var(--lc-bg, #F0F9FF);
+  opacity: 0;
+  transition: opacity 150ms ease;
+  z-index: 0;
+}
+.level-card:hover::after { opacity: 1; }
+.level-card:hover {
+  border-color: var(--lc, #3A86FF);
+  transform: translateY(-7px) scale(1.05);
+  box-shadow: 0 12px 36px var(--lc-shadow, rgba(58,134,255,.25)), 0 2px 8px rgba(0,0,0,.06);
+}
+.level-card:focus-visible {
+  outline: 3px solid var(--lc, #3A86FF);
+  outline-offset: 3px;
+}
+
+/* Colour themes per level — numeric AND named variants */
+.level-card--1,
+.level-card--beginner     { --lc: #55C271; --lc-bg: #F0FDF4; --lc-shadow: rgba(85,194,113,.30); }
+.level-card--2,
+.level-card--intermediate { --lc: #3A86FF; --lc-bg: #EFF6FF; --lc-shadow: rgba(58,134,255,.30); }
+.level-card--3,
+.level-card--advanced     { --lc: #9B6BFF; --lc-bg: #F5F3FF; --lc-shadow: rgba(155,107,255,.30); }
+.level-card--4            { --lc: #F4B942; --lc-bg: #FFFBEB; --lc-shadow: rgba(244,185,66,.30); }
+.level-card--5            { --lc: #FF6B6B; --lc-bg: #FFF5F5; --lc-shadow: rgba(255,107,107,.30); }
+
+/* Emoji badge */
+.level-card__badge {
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  background: var(--lc-bg, #EFF6FF);
+  border: 2.5px solid color-mix(in srgb, var(--lc, #3A86FF) 25%, transparent);
+  box-shadow: 0 2px 8px var(--lc-shadow, rgba(58,134,255,.15));
+  transition: transform 250ms cubic-bezier(0.34,1.56,0.64,1), box-shadow 250ms ease;
+  position: relative;
+  z-index: 1;
+  flex-shrink: 0;
+}
+.level-card:hover .level-card__badge {
+  transform: scale(1.2) rotate(-10deg);
+  box-shadow: 0 6px 20px var(--lc-shadow, rgba(58,134,255,.25));
+}
+
+/* "Level N" label */
+.level-card__num {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.7rem;
+  font-weight: 800;
+  color: var(--lc, #3A86FF);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  position: relative;
+  z-index: 1;
+}
+
+/* Card title */
+.level-card__name {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 900;
+  color: #19496D;
+  line-height: 1.25;
+  position: relative;
+  z-index: 1;
+}
+
+/* Short description */
+.level-card__desc {
+  font-size: 0.68rem;
+  color: #64748B;
+  line-height: 1.45;
+  position: relative;
+  z-index: 1;
+}
+
+/* Difficulty dots */
+.level-card__dots {
+  display: flex;
+  gap: 5px;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  margin-top: 4px;
+}
+.level-card__dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D7E6F5;
+  transition: background 150ms ease;
+}
+.level-card__dot--filled { background: var(--lc, #3A86FF); }
+
+/* ── Responsive ─────────────────────────────────────────────── */
+@media (min-width: 480px) {
+  .level-picker {
+    flex-direction: row;
+    gap: 14px;
+  }
+  .level-card {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    min-height: auto;
+    flex: 1;
+    padding: 20px 12px 16px;
+  }
+}
+
+@media (max-width: 479px) {
+  .level-card__badge { width: 48px; height: 48px; font-size: 1.4rem; flex-shrink: 0; }
+  .level-card__name  { font-size: 1rem; }
+  .level-card__desc  { font-size: 0.75rem; }
+  .modal-panel   { border-radius: 20px; max-width: calc(100vw - 1.5rem); }
+  .modal-body    { padding: 16px 16px 20px; }
+  .modal-header  { padding: 18px 16px 14px; }
+  .modal-header__icon { width: 44px; height: 44px; font-size: 1.5rem; }
+  .modal-title   { font-size: 1.2rem; }
+}

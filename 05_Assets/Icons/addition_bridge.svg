@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet" focusable="false">
+  <title id="title">Addition bridge</title>
+  <desc id="desc">A friendly blue bridge icon representing addition.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#EEF6FF"/></linearGradient>
+    <linearGradient id="stroke" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#2F80ED"/><stop offset="1" stop-color="#2563EB"/></linearGradient>
+  </defs>
+  <rect x="3" y="3" width="114" height="114" rx="24" fill="url(#bg)" stroke="#D7E6F5" stroke-width="2"/>
+  <circle cx="94" cy="22" r="8" fill="#DCEBFF"/>
+  <path d="M16 80 Q58 24 104 80 M20 80 H100 M60 28 V67 M44 47 H76" fill="none" stroke="url(#stroke)" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M22 86 H98" stroke="#B7D3F4" stroke-width="4" stroke-linecap="round"/>
+</svg>

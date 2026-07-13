@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="E-Wiz Kid Abacus Adventure – choose from five math activities: Number Garden, Addition Bridge, Subtraction Cave, Place Value Tower, and Pattern Train." />
+  <meta name="theme-color" content="#3A86FF" />
+  <title>E-Wiz Kid | Choose Activity</title>
+  <link rel="stylesheet" href="../02_Styles/main.css" />
+  <link rel="stylesheet" href="../02_Styles/responsive.css" />
+  <link rel="stylesheet" href="../02_Styles/level-modal.css" />
+  <style>
+    /* ── Activity Page Specific ───────────────────────────── */
+    .activity-body {
+      background: linear-gradient(160deg, #EEF6FF 0%, #F0F6FF 60%, #F4FFF6 100%);
+      min-height: 100dvh;
+    }
+
+    .page-header {
+      padding: var(--sp-6) 0 var(--sp-4);
+      text-align: center;
+    }
+    .page-header__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--c-bright-blue);
+      background: rgba(58,134,255,.08);
+      border: 1px solid rgba(58,134,255,.18);
+      border-radius: var(--r-full);
+      padding: var(--sp-1) var(--sp-4);
+      margin-bottom: var(--sp-3);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .page-header__title {
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: var(--fw-xblk);
+      color: var(--c-deep-blue);
+      line-height: var(--lh-tight);
+      margin-bottom: var(--sp-3);
+    }
+    .page-header__subtitle {
+      font-size: var(--fs-lg);
+      color: var(--c-text-light);
+      max-width: 48ch;
+      margin-inline: auto;
+      line-height: var(--lh-loose);
+    }
+
+    /* Progress summary strip */
+    .progress-summary {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--sp-6);
+      padding: var(--sp-4) var(--sp-6);
+      margin: var(--sp-6) 0;
+      background: var(--c-white);
+      border-radius: var(--r-3xl);
+      border: 3px solid var(--c-border);
+      box-shadow: 0 6px 0px rgba(196, 220, 244, 0.5);
+      max-width: 520px;
+      margin-inline: auto;
+    }
+    .progress-summary__item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+    }
+    .progress-summary__value {
+      font-size: var(--fs-3xl);
+      font-weight: var(--fw-xblk);
+      color: var(--c-deep-blue);
+      line-height: 1;
+    }
+    .progress-summary__label {
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--c-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+    .progress-summary__divider {
+      width: 2px;
+      height: 40px;
+      background: var(--c-border);
+    }
+
+    /* Activity Cards Grid */
+    .activity-section {
+      padding: var(--sp-6) 0 var(--sp-10);
+    }
+    .activity-grid {
+      /* Columns handled by responsive.css: 1→2→3→5 across breakpoints */
+      display: grid;
+      gap: var(--sp-6);
+    }
+
+    .activity-card {
+      background: var(--c-white);
+      border-radius: var(--r-3xl);
+      border: 3px solid var(--c-border);
+      box-shadow: var(--sh-card);
+      overflow: hidden;
+      cursor: pointer;
+      text-decoration: none;
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      cursor: pointer;
+      border: 3px solid transparent;
+      padding: var(--sp-6) var(--sp-4) var(--sp-2);
+      align-items: center;
+      text-align: center;
+      gap: var(--sp-2);
+      transition: all 0.3s var(--ease-spring);
+    }
+    
+    .activity-card:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--sh-xl);
+    }
+    
+    /* Card borders based on color class */
+    .activity-card--green { border-color: #55C271; }
+    .activity-card--blue { border-color: #3A86FF; }
+    .activity-card--purple { border-color: #9B6BFF; }
+    .activity-card--yellow { border-color: #FFD166; }
+    .activity-card--coral { border-color: #FF6B6B; }
+
+    /* Right chevron arrow */
+    .activity-card::after {
+      content: '›';
+      position: absolute;
+      right: 16px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      color: var(--c-muted);
+      font-weight: bold;
+      opacity: 0.6;
+    }
+
+    .activity-card:focus-visible {
+      outline: 4px solid var(--c-bright-blue);
+      outline-offset: 4px;
+    }
+
+    .activity-card__body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: var(--sp-3);
+      flex: 1;
+      width: 100%;
+    }
+
+    /* Icon circle */
+    .activity-card__icon {
+      width: 88px;
+      height: 88px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 16px rgba(0,0,0,.12);
+      transition: transform var(--dur-normal) var(--ease-spring), box-shadow var(--dur-normal) var(--ease);
+      flex-shrink: 0;
+    }
+    .activity-card:hover .activity-card__icon {
+      transform: scale(1.08) rotate(-4deg);
+      box-shadow: 0 8px 24px rgba(0,0,0,.18);
+    }
+    .activity-card__icon svg { width: 52px; height: 52px; }
+
+    .icon-bg--green  { background: linear-gradient(135deg, #64D37A, #38A95A); }
+    .icon-bg--blue   { background: linear-gradient(135deg, #6BA6FF, #2563EB); }
+    .icon-bg--purple { background: linear-gradient(135deg, #B57BFF, #7C3AED); }
+    .icon-bg--yellow { background: linear-gradient(135deg, #FFD166, #F4B942); }
+    .icon-bg--coral  { background: linear-gradient(135deg, #FF8585, #E53E3E); }
+
+    .activity-card__name {
+      font-size: var(--fs-lg);
+      font-weight: var(--fw-xblk);
+      color: var(--c-deep-blue);
+      line-height: var(--lh-snug);
+    }
+    .activity-card__desc {
+      font-size: var(--fs-sm);
+      color: var(--c-text-light);
+      line-height: var(--lh-loose);
+    }
+
+    .activity-card__footer {
+      padding: var(--sp-3) var(--sp-5) var(--sp-5);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--sp-2);
+      border-top: 1px solid var(--c-border);
+    }
+    .activity-card__progress-text {
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-bold);
+      color: var(--c-muted);
+    }
+    .activity-card__stars {
+      display: flex;
+      gap: var(--sp-1);
+    }
+    .activity-card__stars svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* Play button on card */
+    .activity-card__play {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      padding: var(--sp-3);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-black);
+      color: var(--c-white);
+      border-radius: var(--r-lg);
+      border: none;
+      cursor: pointer;
+      margin-top: var(--sp-2);
+      transition: all var(--dur-fast) var(--ease);
+    }
+    .play--green  { background: linear-gradient(135deg,#55C271,#38A95A); }
+    .play--blue   { background: linear-gradient(135deg,#3A86FF,#2563EB); }
+    .play--purple { background: linear-gradient(135deg,#9B6BFF,#7C3AED); }
+    .play--yellow { background: linear-gradient(135deg,#FFD166,#F4B942); color: #7A5400; }
+    .play--coral  { background: linear-gradient(135deg,#FF6B6B,#E53E3E); }
+    .activity-card__play:hover { filter: brightness(1.08); transform: translateY(-1px); }
+
+    /* Locked card overlay */
+    .activity-card--locked {
+      opacity: 0.55;
+      pointer-events: none;
+    }
+    .activity-card--locked .activity-card__body::before {
+      content: '🔒';
+      font-size: 1.8rem;
+      position: absolute;
+      top: var(--sp-4);
+      right: var(--sp-4);
+    }
+
+    /* Back to home */
+    .back-bar {
+      padding: var(--sp-4) 0;
+    }
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-2);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--c-text-light);
+      text-decoration: none;
+      transition: color var(--dur-fast) var(--ease);
+    }
+    .back-link:hover { color: var(--c-bright-blue); }
+    .back-link svg { width: 18px; height: 18px; }
+  </style>
+</head>
+<body class="activity-body">
+
+  <div class="page-bg" aria-hidden="true">
+    <div class="page-bg__circle page-bg__circle--1"></div>
+    <div class="page-bg__circle page-bg__circle--2"></div>
+    <div class="page-bg__circle page-bg__circle--3"></div>
+  </div>
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="E-Wiz Kid home">
+        <div class="logo-badge" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 142 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFD166" stroke-width="8" stroke-linecap="round">
+              <line x1="10" y1="22" x2="132" y2="22"/>
+              <line x1="10" y1="70" x2="132" y2="70"/>
+              <line x1="10" y1="118" x2="132" y2="118"/>
+            </g>
+            <circle cx="40" cy="22" r="14" fill="#FF6B6B" stroke="white" stroke-width="3"/>
+            <circle cx="78" cy="22" r="14" fill="#3A86FF" stroke="white" stroke-width="3"/>
+            <circle cx="40" cy="70" r="14" fill="#55C271" stroke="white" stroke-width="3"/>
+            <circle cx="78" cy="70" r="14" fill="#FF6B6B" stroke="white" stroke-width="3"/>
+            <circle cx="116" cy="70" r="14" fill="#3A86FF" stroke="white" stroke-width="3"/>
+            <circle cx="60" cy="118" r="14" fill="#FFD166" stroke="white" stroke-width="3"/>
+            <circle cx="98" cy="118" r="14" fill="#55C271" stroke="white" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-text__name">E-Wiz Kid</span>
+          <span class="logo-text__sub">Abacus Adventure</span>
+        </div>
+      </a>
+      <nav class="site-header__nav" role="navigation" aria-label="Primary navigation">
+        <a href="index.html"    class="nav-link">Home</a>
+        <a href="activity-selection.html" class="nav-link" aria-current="page">Activities</a>
+        <a href="help.html"     class="nav-link">Help</a>
+      </nav>
+      <div class="site-header__controls">
+        <button class="sound-btn" id="sound-toggle" aria-label="Toggle sound" aria-pressed="true">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main -->
+  <main id="main-content" role="main">
+    <div class="container">
+
+      <!-- Back link -->
+      <div class="back-bar">
+        <a href="index.html" class="back-link" aria-label="Back to home">
+          <svg fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg>
+          Back to Home
+        </a>
+      </div>
+
+      <!-- Page Header -->
+      <div class="page-header anim-fade-in" style="text-align: center; margin-bottom: var(--sp-8);">
+        <h1 class="page-header__title" style="font-size: var(--fs-2xl); font-weight: var(--fw-xblk); color: var(--c-deep-blue); margin-bottom: var(--sp-6);">Choose Activity</h1>
+        
+        <!-- Segmented Difficulty Selector -->
+        <div class="difficulty-toggle" style="display: flex; justify-content: center; background: rgba(255,255,255,0.7); border-radius: 999px; padding: 6px; box-shadow: var(--sh-sm); max-width: 600px; margin: 0 auto var(--sp-2); border: 2px solid var(--c-border);">
+          <button class="diff-btn active" data-level="beginner" style="flex: 1; padding: 12px 24px; border-radius: 999px; border: none; font-weight: var(--fw-bold); font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; background: var(--c-bright-blue); color: white; box-shadow: 0 4px 10px rgba(58,134,255,0.3);">
+            🌱 Beginner
+          </button>
+          <button class="diff-btn" data-level="intermediate" style="flex: 1; padding: 12px 24px; border-radius: 999px; border: none; font-weight: var(--fw-bold); font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--c-deep-blue);">
+            🌿 Intermediate
+          </button>
+          <button class="diff-btn" data-level="advanced" style="flex: 1; padding: 12px 24px; border-radius: 999px; border: none; font-weight: var(--fw-bold); font-size: 1.1rem; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--c-deep-blue);">
+            🌳 Advanced
+          </button>
+        </div>
+        <p id="diff-desc" style="font-size: var(--fs-sm); font-weight: var(--fw-semi); color: var(--c-text-light); text-transform: uppercase; letter-spacing: 1px;">Numbers 0 to 10</p>
+      </div>
+
+      <!-- Activity Cards -->
+      <section class="activity-section" aria-labelledby="activities-heading">
+        <h2 class="sr-only" id="activities-heading">Available Activities</h2>
+        <div class="activity-grid" role="list">
+
+          <!-- Card 1: Number Garden -->
+          <a href="game.html?activity=number_garden&level=beginner" class="activity-card activity-card--green anim-fade-in-up anim-delay-1" role="listitem">
+            <div class="activity-card__body">
+              <div class="activity-card__icon icon-bg--green" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M34 54 C18 34 29 10 50 13 C55 28 50 44 34 54 Z" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="7" stroke-linejoin="round"/>
+                  <path d="M45 67 C57 45 86 43 98 61 C85 78 63 83 45 67 Z" fill="rgba(255,255,255,0.25)" stroke="white" stroke-width="7" stroke-linejoin="round"/>
+                  <path d="M42 58 C52 66 59 74 62 91" fill="none" stroke="rgba(255,255,255,0.9)" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="activity-card__name">Number Garden</h3>
+              <p class="activity-card__desc">Build the number shown.</p>
+            </div>
+            <div class="activity-card__footer">
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
+              <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 2: Addition Bridge -->
+          <a href="game.html?activity=addition_bridge&level=beginner" class="activity-card activity-card--blue anim-fade-in-up anim-delay-2" role="listitem">
+            <div class="activity-card__body">
+              <div class="activity-card__icon icon-bg--blue" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M16 80 Q58 24 104 80 M20 80 H100 M60 28 V67 M44 47 H76" fill="none" stroke="white" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M22 86 H98" stroke="rgba(255,255,255,.5)" stroke-width="4" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="activity-card__name">Addition Bridge</h3>
+              <p class="activity-card__desc">Add the numbers and show the answer.</p>
+            </div>
+            <div class="activity-card__footer">
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
+              <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 3: Subtraction Cave -->
+          <a href="game.html?activity=subtraction_cave&level=beginner" class="activity-card activity-card--purple anim-fade-in-up anim-delay-3" aria-label="Play Subtraction Cave">
+            <div class="activity-card__body">
+              <div class="activity-card__icon icon-bg--purple" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M12 91 Q24 29 60 20 Q96 29 108 91 Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M39 91 Q46 59 60 53 Q74 59 81 91" fill="rgba(255,255,255,0.1)" stroke="rgba(255,255,255,0.8)" stroke-width="7" stroke-linecap="round"/>
+                  <path d="M39 42 H81" stroke="rgba(255,255,255,0.7)" stroke-width="6" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="activity-card__name">Subtraction Cave</h3>
+              <p class="activity-card__desc">Subtract and build the answer.</p>
+            </div>
+            <div class="activity-card__footer">
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
+              <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 4: Place Value Tower -->
+          <a href="game.html?activity=place_value_tower&level=beginner" class="activity-card activity-card--yellow anim-fade-in-up anim-delay-4" role="listitem" aria-label="Place Value Tower activity">
+            <div class="activity-card__stripe stripe--yellow" aria-hidden="true"></div>
+            <div class="activity-card__body">
+              <div class="activity-card__icon icon-bg--yellow" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M18 100 H102 V87 H89 V59 H75 V35 H59 V59 H45 V87 H18 Z" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <path d="M28 72 H40 M52 72 H64 M76 72 H88" stroke="rgba(255,255,255,0.8)" stroke-width="5" stroke-linecap="round"/>
+                  <path d="M60 45 H74" stroke="rgba(255,255,255,0.6)" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="activity-card__name">Place Value Tower</h3>
+              <p class="activity-card__desc">Explore hundreds, tens, and ones.</p>
+            </div>
+            <div class="activity-card__footer">
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
+              <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </a>
+
+          <!-- Card 5: Pattern Train -->
+          <a href="game.html?activity=pattern_train&level=beginner" class="activity-card activity-card--coral anim-fade-in-up anim-delay-5" role="listitem" aria-label="Pattern Train activity">
+            <div class="activity-card__stripe stripe--coral" aria-hidden="true"></div>
+            <div class="activity-card__body">
+              <div class="activity-card__icon icon-bg--coral" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                  <path d="M14 75 H79 V42 H49 V25 H81 L101 44 V75 H108 V91 H14 Z" fill="rgba(255,255,255,0.15)" stroke="white" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>
+                  <circle cx="38" cy="75" r="11" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="5"/>
+                  <circle cx="82" cy="75" r="11" fill="rgba(255,255,255,0.2)" stroke="white" stroke-width="5"/>
+                  <path d="M54 55 H71 M54 66 H71" stroke="rgba(255,255,255,0.7)" stroke-width="5" stroke-linecap="round"/>
+                </svg>
+              </div>
+              <h3 class="activity-card__name">Pattern Train</h3>
+              <p class="activity-card__desc">Remember the pattern and rebuild it.</p>
+            </div>
+            <div class="activity-card__footer">
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
+              <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+            </div>
+          </a>
+
+        </div>
+      </section>
+
+    </div><!-- /container -->
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2024 <a href="index.html">E-Wiz Kid</a> · Bengaluru, India · Educational Technology for Young Learners</p>
+  </footer>
+
+  <script type="module" src="../03_Scripts/app.js?v=10"></script>
+</body>
+</html>
+
+
+
+

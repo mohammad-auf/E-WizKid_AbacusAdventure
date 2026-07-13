@@ -1,0 +1,35 @@
+{
+  "schema_version": "1.0",
+  "rewards": [
+    {
+      "id": "first_bead",
+      "title": "First Bead",
+      "condition": "Complete the first question."
+    },
+    {
+      "id": "number_gardener",
+      "title": "Number Gardener",
+      "condition": "Complete Number Garden beginner."
+    },
+    {
+      "id": "bridge_builder",
+      "title": "Bridge Builder",
+      "condition": "Complete Addition Bridge beginner."
+    },
+    {
+      "id": "cave_counter",
+      "title": "Cave Counter",
+      "condition": "Complete Subtraction Cave beginner."
+    },
+    {
+      "id": "place_value_pro",
+      "title": "Place Value Pro",
+      "condition": "Earn three stars in Place Value Tower."
+    },
+    {
+      "id": "pattern_engineer",
+      "title": "Pattern Engineer",
+      "condition": "Complete Pattern Train advanced."
+    }
+  ]
+}

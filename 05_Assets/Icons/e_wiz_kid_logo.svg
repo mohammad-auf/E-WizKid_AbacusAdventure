@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 180" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet" focusable="false">
+  <title id="title">E-Wiz Kid logo</title>
+  <desc id="desc">A friendly educational logo with a colorful abacus icon and the words E-Wiz Kid.</desc>
+  <defs>
+    <linearGradient id="badge" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#245D87"/><stop offset="1" stop-color="#163D5C"/></linearGradient>
+  </defs>
+  <g transform="translate(18 20)">
+    <rect width="142" height="140" rx="26" fill="url(#badge)"/>
+    <g stroke="#FFD166" stroke-width="8" stroke-linecap="round">
+      <line x1="28" y1="32" x2="114" y2="32"/><line x1="28" y1="70" x2="114" y2="70"/><line x1="28" y1="108" x2="114" y2="108"/>
+    </g>
+    <g stroke="#FFFFFF" stroke-width="3">
+      <circle cx="52" cy="32" r="13" fill="#FF6B6B"/><circle cx="86" cy="32" r="13" fill="#3A86FF"/>
+      <circle cx="42" cy="70" r="13" fill="#55C271"/><circle cx="76" cy="70" r="13" fill="#FF6B6B"/><circle cx="110" cy="70" r="13" fill="#3A86FF"/>
+      <circle cx="62" cy="108" r="13" fill="#FFD166"/><circle cx="96" cy="108" r="13" fill="#55C271"/>
+    </g>
+  </g>
+  <text x="188" y="82" font-family="Inter, Arial, sans-serif" font-size="58" font-weight="800" fill="#19496D">E-Wiz Kid</text>
+  <text x="192" y="128" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="600" fill="#3A86FF">Play, count, and learn</text>
+</svg>

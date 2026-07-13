@@ -1,0 +1,59 @@
+{
+  "schema_version": "1.0",
+  "levels": [
+    {
+      "id": "beginner",
+      "label": "Beginner",
+      "number_min": 0,
+      "number_max": 10,
+      "active_rods": [
+        "ones"
+      ],
+      "questions_per_session": 6,
+      "timer_seconds": 0,
+      "hint_limit": 6,
+      "stars": {
+        "three": 6,
+        "two": 4,
+        "one": 2
+      }
+    },
+    {
+      "id": "intermediate",
+      "label": "Intermediate",
+      "number_min": 0,
+      "number_max": 99,
+      "active_rods": [
+        "tens",
+        "ones"
+      ],
+      "questions_per_session": 6,
+      "timer_seconds": 0,
+      "hint_limit": 4,
+      "stars": {
+        "three": 6,
+        "two": 4,
+        "one": 2
+      }
+    },
+    {
+      "id": "advanced",
+      "label": "Advanced",
+      "number_min": 0,
+      "number_max": 999,
+      "active_rods": [
+        "hundreds",
+        "tens",
+        "ones"
+      ],
+      "questions_per_session": 6,
+      "timer_seconds": 90,
+      "hint_limit": 3,
+      "stars": {
+        "three": 6,
+        "two": 4,
+        "one": 2
+      }
+    }
+  ]
+}

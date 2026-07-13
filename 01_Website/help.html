@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="E-Wiz Kid Abacus Adventure – learn how to use the abacus, understand place value, and get tips for every activity." />
+  <meta name="theme-color" content="#3A86FF" />
+  <title>E-Wiz Kid | How to Play</title>
+  <link rel="stylesheet" href="../02_Styles/main.css" />
+  <link rel="stylesheet" href="../02_Styles/responsive.css" />
+  <style>
+    /* ── Help Page Specific ───────────────────────────────── */
+    .help-body {
+      background: linear-gradient(160deg, #EEF6FF 0%, #F0F6FF 60%, #FFF8F0 100%);
+      min-height: 100dvh;
+    }
+
+    /* Page banner */
+    .help-banner {
+      background: linear-gradient(135deg, var(--c-deep-blue), #0F2D45);
+      padding: var(--sp-12) 0;
+      text-align: center;
+      color: var(--c-white);
+      position: relative;
+      overflow: hidden;
+    }
+    .help-banner::before {
+      content: '';
+      position: absolute;
+      top: -80px; right: -80px;
+      width: 320px; height: 320px;
+      background: rgba(255,255,255,.03);
+      border-radius: 50%;
+    }
+    .help-banner::after {
+      content: '';
+      position: absolute;
+      bottom: -100px; left: -60px;
+      width: 280px; height: 280px;
+      background: rgba(58,134,255,.06);
+      border-radius: 50%;
+    }
+    .help-banner__icon {
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: rgba(255,255,255,.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto var(--sp-4);
+      border: 2px solid rgba(255,255,255,.2);
+      position: relative; z-index: 1;
+    }
+    .help-banner__title {
+      font-size: clamp(1.875rem, 4vw, 2.5rem);
+      font-weight: var(--fw-xblk);
+      margin-bottom: var(--sp-2);
+      position: relative; z-index: 1;
+    }
+    .help-banner__subtitle {
+      font-size: var(--fs-lg);
+      color: rgba(255,255,255,.75);
+      max-width: 42ch;
+      margin-inline: auto;
+      line-height: var(--lh-loose);
+      position: relative; z-index: 1;
+    }
+
+    /* Quick navigation pills */
+    .help-nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--sp-2);
+      justify-content: center;
+      padding: var(--sp-6) var(--sp-4);
+      background: var(--c-white);
+      border-bottom: 1.5px solid var(--c-border);
+      position: sticky;
+      top: var(--hdr-h);
+      z-index: 100;
+    }
+    .help-nav__link {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-1);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-bold);
+      color: var(--c-text-light);
+      text-decoration: none;
+      padding: var(--sp-2) var(--sp-4);
+      border-radius: var(--r-full);
+      border: 1.5px solid var(--c-border);
+      background: var(--c-light-panel);
+      transition: all var(--dur-fast) var(--ease);
+    }
+    .help-nav__link:hover {
+      border-color: var(--c-bright-blue);
+      color: var(--c-bright-blue);
+      background: rgba(58,134,255,.06);
+    }
+
+    /* Main content area */
+    .help-content {
+      padding: var(--sp-12) 0 var(--sp-16);
+    }
+
+    /* Section cards */
+    .help-section {
+      margin-bottom: var(--sp-10);
+      scroll-margin-top: calc(var(--hdr-h) + 80px);
+    }
+    .help-section__header {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-4);
+      margin-bottom: var(--sp-5);
+    }
+    .help-section__icon {
+      width: 52px; height: 52px;
+      border-radius: var(--r-lg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--sh-sm);
+    }
+    .help-section__icon svg { width: 28px; height: 28px; }
+    .help-section__title {
+      font-size: var(--fs-xl);
+      font-weight: var(--fw-xblk);
+      color: var(--c-deep-blue);
+    }
+    .help-section__subtitle {
+      font-size: var(--fs-sm);
+      color: var(--c-muted);
+      margin-top: 2px;
+    }
+
+    /* Content card */
+    .help-card {
+      background: var(--c-white);
+      border-radius: var(--r-xl);
+      border: 1.5px solid var(--c-border);
+      box-shadow: var(--sh-card);
+      overflow: hidden;
+    }
+    .help-card__body { padding: var(--sp-6); }
+    .help-card p {
+      color: var(--c-text-light);
+      line-height: var(--lh-loose);
+      margin-bottom: var(--sp-4);
+      font-size: var(--fs-md);
+    }
+    .help-card p:last-child { margin-bottom: 0; }
+
+    /* Abacus visual demonstration */
+    .abacus-demo {
+      background: var(--c-cream);
+      border-radius: var(--r-xl);
+      padding: var(--sp-6);
+      margin-bottom: var(--sp-5);
+      border: 1.5px solid rgba(25,73,109,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .abacus-demo svg { max-width: 100%; }
+
+    /* Place value table */
+    .place-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: var(--fs-sm);
+      border-radius: var(--r-lg);
+      overflow: hidden;
+    }
+    .place-table th {
+      background: linear-gradient(135deg, var(--c-deep-blue), #0F2D45);
+      color: var(--c-white);
+      padding: var(--sp-3) var(--sp-4);
+      text-align: left;
+      font-weight: var(--fw-black);
+      letter-spacing: 0.04em;
+    }
+    .place-table td {
+      padding: var(--sp-3) var(--sp-4);
+      border-bottom: 1px solid var(--c-border);
+    }
+    .place-table tr:last-child td { border-bottom: none; }
+    .place-table tr:nth-child(even) td { background: var(--c-light-panel); }
+    .place-table .hundreds { color: var(--c-coral-dark); font-weight: var(--fw-black); }
+    .place-table .tens     { color: var(--c-blue-dark);  font-weight: var(--fw-black); }
+    .place-table .ones     { color: var(--c-green-dark); font-weight: var(--fw-black); }
+
+    /* Example card */
+    .example-card {
+      display: flex;
+      align-items: center;
+      gap: var(--sp-5);
+      background: linear-gradient(135deg, rgba(58,134,255,.06), rgba(85,194,113,.06));
+      border: 2px solid rgba(58,134,255,.2);
+      border-radius: var(--r-xl);
+      padding: var(--sp-5);
+      margin-bottom: var(--sp-5);
+    }
+    .example-card__number {
+      font-size: var(--fs-4xl);
+      font-weight: var(--fw-xblk);
+      color: var(--c-deep-blue);
+      flex-shrink: 0;
+      min-width: 80px;
+      text-align: center;
+    }
+    .example-card__breakdown {
+      flex: 1;
+    }
+    .example-card__breakdown p {
+      margin-bottom: var(--sp-2) !important;
+      font-size: var(--fs-base) !important;
+    }
+    .bead-visual {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .bead-pip {
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      display: inline-block;
+    }
+
+    /* Step-by-step list */
+    .steps-list {
+      counter-reset: steps;
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-4);
+    }
+    .step {
+      display: flex;
+      gap: var(--sp-4);
+      align-items: flex-start;
+    }
+    .step__number {
+      counter-increment: steps;
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-bright-blue), var(--c-blue-dark));
+      color: var(--c-white);
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-xblk);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      box-shadow: var(--sh-sm);
+    }
+    .step__number::before { content: counter(steps); }
+    .step__body { flex: 1; padding-top: 6px; }
+    .step__body strong {
+      display: block;
+      font-size: var(--fs-base);
+      font-weight: var(--fw-bold);
+      color: var(--c-deep-blue);
+      margin-bottom: var(--sp-1);
+    }
+    .step__body p {
+      font-size: var(--fs-sm);
+      color: var(--c-text-light);
+      margin: 0 !important;
+      line-height: var(--lh-loose);
+    }
+
+    /* Controls grid */
+    .controls-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--sp-4);
+    }
+    .control-item {
+      display: flex;
+      flex-direction: column;
+      gap: var(--sp-2);
+      padding: var(--sp-4);
+      background: var(--c-light-panel);
+      border-radius: var(--r-lg);
+      border: 1.5px solid var(--c-border);
+    }
+    .control-item__label {
+      font-size: var(--fs-sm);
+      font-weight: var(--fw-black);
+      color: var(--c-deep-blue);
+    }
+    .control-item__key {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--sp-1);
+      font-size: var(--fs-xs);
+      font-weight: var(--fw-bold);
+      color: var(--c-muted);
+      background: var(--c-white);
+      border: 1.5px solid var(--c-border);
+      border-radius: var(--r-sm);
+      padding: 2px var(--sp-2);
+    }
+    .control-item__desc {
+      font-size: var(--fs-xs);
+      color: var(--c-muted);
+      line-height: var(--lh-loose);
+    }
+
+    /* Privacy section */
+    .privacy-card {
+      background: rgba(85,194,113,.06);
+      border: 1.5px solid rgba(85,194,113,.25);
+      border-radius: var(--r-xl);
+      padding: var(--sp-6);
+      display: flex;
+      gap: var(--sp-4);
+      align-items: flex-start;
+    }
+    .privacy-card__icon {
+      width: 48px; height: 48px;
+      background: rgba(85,194,113,.15);
+      border-radius: var(--r-full);
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0;
+      color: var(--c-green-dark);
+    }
+    .privacy-card__title {
+      font-size: var(--fs-md);
+      font-weight: var(--fw-black);
+      color: var(--c-green-dark);
+      margin-bottom: var(--sp-2);
+    }
+    .privacy-card__body {
+      font-size: var(--fs-sm);
+      color: var(--c-text-light);
+      line-height: var(--lh-loose);
+      margin: 0;
+    }
+
+    /* FAQ accordion */
+    .faq-list { display: flex; flex-direction: column; gap: var(--sp-2); }
+    .faq-item { border: 1.5px solid var(--c-border); border-radius: var(--r-lg); overflow: hidden; }
+    .faq-item__trigger {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: var(--sp-4) var(--sp-5);
+      background: var(--c-white);
+      border: none;
+      cursor: pointer;
+      text-align: left;
+      font-size: var(--fs-base);
+      font-weight: var(--fw-bold);
+      color: var(--c-deep-blue);
+      gap: var(--sp-3);
+    }
+    .faq-item__trigger:hover { background: var(--c-light-panel); }
+    .faq-item__trigger svg { flex-shrink: 0; transition: transform var(--dur-fast) var(--ease); }
+    .faq-item__trigger[aria-expanded="true"] svg { transform: rotate(180deg); }
+    .faq-item__body {
+      display: none;
+      padding: 0 var(--sp-5) var(--sp-4);
+      background: var(--c-white);
+      font-size: var(--fs-sm);
+      color: var(--c-text-light);
+      line-height: var(--lh-loose);
+    }
+    .faq-item__body.open { display: block; }
+  </style>
+</head>
+<body class="help-body">
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- Header -->
+  <header class="site-header" role="banner">
+    <div class="site-header__inner">
+      <a class="site-header__logo" href="index.html" aria-label="E-Wiz Kid home">
+        <div class="logo-badge" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 142 140" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <g stroke="#FFD166" stroke-width="8" stroke-linecap="round">
+              <line x1="10" y1="22" x2="132" y2="22"/>
+              <line x1="10" y1="70" x2="132" y2="70"/>
+              <line x1="10" y1="118" x2="132" y2="118"/>
+            </g>
+            <circle cx="40" cy="22" r="14" fill="#FF6B6B" stroke="white" stroke-width="3"/>
+            <circle cx="78" cy="22" r="14" fill="#3A86FF" stroke="white" stroke-width="3"/>
+            <circle cx="40" cy="70" r="14" fill="#55C271" stroke="white" stroke-width="3"/>
+            <circle cx="78" cy="70" r="14" fill="#FF6B6B" stroke="white" stroke-width="3"/>
+            <circle cx="116" cy="70" r="14" fill="#3A86FF" stroke="white" stroke-width="3"/>
+            <circle cx="60" cy="118" r="14" fill="#FFD166" stroke="white" stroke-width="3"/>
+            <circle cx="98" cy="118" r="14" fill="#55C271" stroke="white" stroke-width="3"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-text__name">E-Wiz Kid</span>
+          <span class="logo-text__sub">Abacus Adventure</span>
+        </div>
+      </a>
+      <nav class="site-header__nav" role="navigation" aria-label="Primary navigation">
+        <a href="index.html"    class="nav-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2z"/><polyline points="9,22 9,12 15,12 15,22"/></svg>
+          Home
+        </a>
+        <a href="activity-selection.html" class="nav-link">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+          Activities
+        </a>
+        <a href="help.html"     class="nav-link" aria-current="page">
+          <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Help
+        </a>
+      </nav>
+
+      <div class="site-header__controls">
+        <button class="sound-btn" id="sound-toggle" aria-label="Toggle sound" aria-pressed="true" title="Toggle sound">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true">
+            <polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/>
+            <path d="M19.07 4.93a10 10 0 010 14.14"/>
+            <path d="M15.54 8.46a5 5 0 010 7.07"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Help Banner -->
+  <div class="help-banner" role="banner" aria-labelledby="help-main-title">
+    <div class="help-banner__icon" aria-hidden="true">
+      <svg width="40" height="40" fill="none" stroke="white" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+    </div>
+    <h1 class="help-banner__title" id="help-main-title">How to Play</h1>
+    <p class="help-banner__subtitle">Learn how the abacus works, understand place value, and master every activity.</p>
+  </div>
+
+  <!-- Quick Navigation -->
+  <nav class="help-nav" aria-label="Help sections">
+    <a class="help-nav__link" href="#section-abacus">🔢 The Abacus</a>
+    <a class="help-nav__link" href="#section-place-value">🏗️ Place Value</a>
+    <a class="help-nav__link" href="#section-example">💡 Example</a>
+    <a class="help-nav__link" href="#section-answering">✅ Answering</a>
+    <a class="help-nav__link" href="#section-controls">⌨️ Controls</a>
+    <a class="help-nav__link" href="#section-stars">⭐ Stars</a>
+    <a class="help-nav__link" href="#section-privacy">🔒 Privacy</a>
+    <a class="help-nav__link" href="#section-faq">❓ FAQ</a>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="main-content" role="main">
+    <div class="help-content">
+      <div class="container">
+
+        <!-- Section: The Abacus -->
+        <section class="help-section" id="section-abacus" aria-labelledby="abacus-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, #EEF6FF, #D7E6F5);" aria-hidden="true">
+              <svg width="28" height="28" fill="none" stroke="var(--c-bright-blue)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="abacus-heading">The Abacus</h2>
+              <p class="help-section__subtitle">How the beads work</p>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <!-- Inline abacus reference SVG from client assets -->
+            <div class="abacus-demo" aria-label="Abacus diagram showing Hundreds, Tens, and Ones rods with beads">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="help-abacus-title help-abacus-desc" preserveAspectRatio="xMidYMid meet" focusable="false" style="max-width: 500px;">
+                <title id="help-abacus-title">Three-rod abacus reference</title>
+                <desc id="help-abacus-desc">A polished educational abacus showing hundreds, tens and ones rods with beads.</desc>
+                <defs>
+                  <linearGradient id="panel" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFFDF7"/><stop offset="1" stop-color="#FFF5DA"/></linearGradient>
+                  <linearGradient id="frame" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#204F75"/><stop offset="1" stop-color="#123A5A"/></linearGradient>
+                </defs>
+                <rect x="20" y="20" width="680" height="380" rx="32" fill="#F8FBFE"/>
+                <rect x="42" y="38" width="636" height="305" rx="24" fill="url(#panel)" stroke="url(#frame)" stroke-width="14"/>
+                <g stroke="#70859A" stroke-width="10" stroke-linecap="round">
+                  <line x1="190" y1="78" x2="190" y2="306"/><line x1="360" y1="78" x2="360" y2="306"/><line x1="530" y1="78" x2="530" y2="306"/>
+                </g>
+                <g stroke="#FFFFFF" stroke-width="4">
+                  <circle cx="190" cy="270" r="27" fill="#FF6B6B"/><circle cx="190" cy="216" r="27" fill="#FF6B6B"/><circle cx="190" cy="162" r="27" fill="#FF6B6B"/>
+                  <circle cx="360" cy="270" r="27" fill="#3A86FF"/><circle cx="360" cy="216" r="27" fill="#3A86FF"/>
+                  <circle cx="530" cy="270" r="27" fill="#55C271"/>
+                </g>
+                <g font-family="Inter, Arial, sans-serif" font-size="25" font-weight="700" fill="#19496D" text-anchor="middle">
+                  <text x="190" y="386">Hundreds</text><text x="360" y="386">Tens</text><text x="530" y="386">Ones</text>
+                </g>
+              </svg>
+            </div>
+
+            <div class="help-card__body">
+              <p>The abacus has three rods: <strong style="color: var(--c-coral-dark);">Hundreds</strong>, <strong style="color: var(--c-blue-dark);">Tens</strong>, and <strong style="color: var(--c-green-dark);">Ones</strong>. Each rod can hold beads.</p>
+              <p>Move beads <strong>toward the centre</strong> (the counting side) of each rod to make them active. Every active bead adds one unit to that rod. To remove a unit, move the bead back.</p>
+              <p>Click or tap any bead to toggle it. On a keyboard, use <kbd>Tab</kbd> to focus a bead and <kbd>Enter</kbd> or <kbd>Space</kbd> to activate it.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Place Value -->
+        <section class="help-section" id="section-place-value" aria-labelledby="place-value-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, #FFF9E9, #FFF0BA);" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+                <path d="M18 100 H102 V87 H89 V59 H75 V35 H59 V59 H45 V87 H18 Z" fill="none" stroke="#F4B942" stroke-width="8" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="place-value-heading">Place Value</h2>
+              <p class="help-section__subtitle">What each rod means</p>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__body">
+              <table class="place-table" aria-label="Place value table">
+                <thead>
+                  <tr>
+                    <th scope="col">Rod</th>
+                    <th scope="col">Bead Colour</th>
+                    <th scope="col">Each Bead Equals</th>
+                    <th scope="col">Example</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><span class="hundreds">Hundreds</span></td>
+                    <td><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:16px;height:16px;border-radius:50%;background:#FF6B6B;display:inline-block;"></span> Red</span></td>
+                    <td><strong>100</strong></td>
+                    <td>3 beads = 300</td>
+                  </tr>
+                  <tr>
+                    <td><span class="tens">Tens</span></td>
+                    <td><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:16px;height:16px;border-radius:50%;background:#3A86FF;display:inline-block;"></span> Blue</span></td>
+                    <td><strong>10</strong></td>
+                    <td>2 beads = 20</td>
+                  </tr>
+                  <tr>
+                    <td><span class="ones">Ones</span></td>
+                    <td><span style="display:inline-flex;align-items:center;gap:4px;"><span style="width:16px;height:16px;border-radius:50%;background:#55C271;display:inline-block;"></span> Green</span></td>
+                    <td><strong>1</strong></td>
+                    <td>4 beads = 4</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Example -->
+        <section class="help-section" id="section-example" aria-labelledby="example-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, rgba(58,134,255,.1), rgba(85,194,113,.1));" aria-hidden="true">
+              <svg width="28" height="28" fill="none" stroke="var(--c-green-dark)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="example-heading">Worked Example</h2>
+              <p class="help-section__subtitle">Building 324 on the abacus</p>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__body">
+              <div class="example-card" aria-label="Example: Building the number 324">
+                <div class="example-card__number" aria-hidden="true">324</div>
+                <div class="example-card__breakdown">
+                  <p>
+                    <strong style="color: var(--c-coral-dark);">Hundreds:</strong>
+                    <span class="bead-visual">
+                      <span class="bead-pip" style="background:#FF6B6B;" aria-hidden="true"></span>
+                      <span class="bead-pip" style="background:#FF6B6B;" aria-hidden="true"></span>
+                      <span class="bead-pip" style="background:#FF6B6B;" aria-hidden="true"></span>
+                    </span>
+                    3 active beads = <strong>300</strong>
+                  </p>
+                  <p>
+                    <strong style="color: var(--c-blue-dark);">Tens:</strong>
+                    <span class="bead-visual">
+                      <span class="bead-pip" style="background:#3A86FF;" aria-hidden="true"></span>
+                      <span class="bead-pip" style="background:#3A86FF;" aria-hidden="true"></span>
+                    </span>
+                    2 active beads = <strong>20</strong>
+                  </p>
+                  <p>
+                    <strong style="color: var(--c-green-dark);">Ones:</strong>
+                    <span class="bead-visual">
+                      <span class="bead-pip" style="background:#55C271;" aria-hidden="true"></span>
+                      <span class="bead-pip" style="background:#55C271;" aria-hidden="true"></span>
+                      <span class="bead-pip" style="background:#55C271;" aria-hidden="true"></span>
+                      <span class="bead-pip" style="background:#55C271;" aria-hidden="true"></span>
+                    </span>
+                    4 active beads = <strong>4</strong>
+                  </p>
+                  <p><strong>Total: 300 + 20 + 4 = <span style="color:var(--c-deep-blue);font-size:1.2em;">324</span></strong></p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Answering -->
+        <section class="help-section" id="section-answering" aria-labelledby="answering-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, #EFFBF2, #D0EED8);" aria-hidden="true">
+              <svg width="28" height="28" fill="none" stroke="var(--c-green-dark)" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="answering-heading">Answering Questions</h2>
+              <p class="help-section__subtitle">Step by step</p>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__body">
+              <ol class="steps-list" aria-label="Steps for answering a question">
+                <li class="step">
+                  <div class="step__number" aria-label="Step 1" aria-hidden="true"></div>
+                  <div class="step__body">
+                    <strong>Read the question</strong>
+                    <p>The question appears at the top of the game screen. Read it carefully before moving any beads.</p>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step__number" aria-label="Step 2" aria-hidden="true"></div>
+                  <div class="step__body">
+                    <strong>Build the answer on the abacus</strong>
+                    <p>Click or tap beads to move them toward the counting side. The "Current Number" display updates live as you adjust beads.</p>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step__number" aria-label="Step 3" aria-hidden="true"></div>
+                  <div class="step__body">
+                    <strong>Press Submit Answer</strong>
+                    <p>When you are happy with your answer, click the blue "Submit Answer" button in the sidebar.</p>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step__number" aria-label="Step 4" aria-hidden="true"></div>
+                  <div class="step__body">
+                    <strong>Use Hint if needed</strong>
+                    <p>If you are stuck, press the "Hint" button. A helpful clue will appear beneath the question.</p>
+                  </div>
+                </li>
+                <li class="step">
+                  <div class="step__number" aria-label="Step 5" aria-hidden="true"></div>
+                  <div class="step__body">
+                    <strong>Reset to start over</strong>
+                    <p>Press "Reset Abacus" to clear all beads back to zero and start building from scratch.</p>
+                  </div>
+                </li>
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Controls -->
+        <section class="help-section" id="section-controls" aria-labelledby="controls-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, #F5F3FF, #EDE9FE);" aria-hidden="true">
+              <svg width="28" height="28" fill="none" stroke="var(--c-purple)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 21V5a2 2 0 00-2-2h-4a2 2 0 00-2 2v16"/></svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="controls-heading">Controls</h2>
+              <p class="help-section__subtitle">Mouse, touch, and keyboard</p>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__body">
+              <div class="controls-grid">
+                <div class="control-item">
+                  <span class="control-item__label">Move a bead</span>
+                  <span class="control-item__key">Click / Tap</span>
+                  <span class="control-item__desc">Click any bead to toggle it active or inactive.</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-item__label">Keyboard bead</span>
+                  <span class="control-item__key">Tab → Enter / Space</span>
+                  <span class="control-item__desc">Tab to focus a bead, then press Enter or Space to toggle it.</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-item__label">Submit answer</span>
+                  <span class="control-item__key">Click Submit</span>
+                  <span class="control-item__desc">Press the "Submit Answer" button when ready.</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-item__label">Reset abacus</span>
+                  <span class="control-item__key">Click Reset</span>
+                  <span class="control-item__desc">Clears all beads back to zero.</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-item__label">Get a hint</span>
+                  <span class="control-item__key">Click Hint</span>
+                  <span class="control-item__desc">Shows a clue below the question.</span>
+                </div>
+                <div class="control-item">
+                  <span class="control-item__label">Pause / Resume</span>
+                  <span class="control-item__key">Click ⏸</span>
+                  <span class="control-item__desc">Pauses the game. Your progress is saved.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Stars -->
+        <section class="help-section" id="section-stars" aria-labelledby="stars-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, #FFF9E9, #FFF0BA);" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="#FFD166" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="stars-heading">Stars &amp; Rewards</h2>
+              <p class="help-section__subtitle">How scoring works</p>
+            </div>
+          </div>
+
+          <div class="help-card">
+            <div class="help-card__body">
+              <p>Stars reward accurate answers and completed levels. After finishing all questions in an activity, you receive 1, 2, or 3 stars based on how many you answered correctly.</p>
+              <p><strong style="color: #7A5400;">⭐ 1 Star</strong> — You completed the level. Well done!</p>
+              <p><strong style="color: #7A5400;">⭐⭐ 2 Stars</strong> — Most answers were correct. Great work!</p>
+              <p><strong style="color: #7A5400;">⭐⭐⭐ 3 Stars</strong> — All or nearly all answers were correct. Amazing!</p>
+              <p>Stars are saved only in your current browser. No account or login is required to earn or keep stars.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: Privacy -->
+        <section class="help-section" id="section-privacy" aria-labelledby="privacy-heading">
+          <h2 class="sr-only" id="privacy-heading">Privacy Information</h2>
+          <div class="privacy-card" role="note">
+            <div class="privacy-card__icon" aria-hidden="true">
+              <svg width="28" height="28" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            </div>
+            <div>
+              <h3 class="privacy-card__title">Privacy &amp; Data Safety</h3>
+              <p class="privacy-card__body">The game does not request a name, email address, account, or personal profile of any kind. Progress is stored only in the browser using localStorage. No data is sent to any server. This tool is safe for children.</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- Section: FAQ -->
+        <section class="help-section" id="section-faq" aria-labelledby="faq-heading">
+          <div class="help-section__header">
+            <div class="help-section__icon" style="background: linear-gradient(135deg, #EEF6FF, #D7E6F5);" aria-hidden="true">
+              <svg width="28" height="28" fill="none" stroke="var(--c-bright-blue)" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            </div>
+            <div>
+              <h2 class="help-section__title" id="faq-heading">Frequently Asked Questions</h2>
+              <p class="help-section__subtitle">Common questions answered</p>
+            </div>
+          </div>
+
+          <div class="faq-list">
+
+            <div class="faq-item">
+              <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-1-body" id="faq-1">
+                Can I play offline?
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+              </button>
+              <div class="faq-item__body" id="faq-1-body" role="region" aria-labelledby="faq-1">
+                Yes! Once the page has loaded, all five activities work without an internet connection. Your progress is saved in the browser.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-2-body" id="faq-2">
+                My progress has disappeared. What happened?
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+              </button>
+              <div class="faq-item__body" id="faq-2-body" role="region" aria-labelledby="faq-2">
+                Progress is stored in your browser's localStorage. Clearing browser data, using a private/incognito window, or switching browsers will remove saved progress.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-3-body" id="faq-3">
+                Can I use this on a phone or tablet?
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+              </button>
+              <div class="faq-item__body" id="faq-3-body" role="region" aria-labelledby="faq-3">
+                Yes! Abacus Adventure is designed for all screen sizes including phones, tablets, laptops, and desktop computers. All beads have large touch targets.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-4-body" id="faq-4">
+                How do I turn off the sound?
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+              </button>
+              <div class="faq-item__body" id="faq-4-body" role="region" aria-labelledby="faq-4">
+                Click the sound icon (🔊) in the top-right corner of any screen to mute all sound effects and music. The game can be played completely silently.
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-item__trigger" aria-expanded="false" aria-controls="faq-5-body" id="faq-5">
+                What age group is this for?
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="6,9 12,15 18,9"/></svg>
+              </button>
+              <div class="faq-item__body" id="faq-5-body" role="region" aria-labelledby="faq-5">
+                Abacus Adventure is designed for children aged 6–10, but can be enjoyed by anyone learning about place value and abacus arithmetic. The five levels cover beginner through advanced skills.
+              </div>
+            </div>
+
+          </div><!-- /faq-list -->
+        </section>
+
+        <!-- Back to start -->
+        <div style="text-align: center; padding-top: var(--sp-4);">
+          <a href="activity-selection.html" class="btn btn--primary btn--lg" id="start-playing-btn">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21 5,3"/></svg>
+            Start Playing
+          </a>
+        </div>
+
+      </div><!-- /container -->
+    </div><!-- /help-content -->
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <p>© 2024 <a href="index.html">E-Wiz Kid</a> · Bengaluru, India · Educational Technology for Young Learners · <a href="index.html">Home</a></p>
+  </footer>
+
+  <script type="module" src="../03_Scripts/app.js"></script>
+  <script>
+    // FAQ accordion
+    document.querySelectorAll('.faq-item__trigger').forEach(trigger => {
+      trigger.addEventListener('click', () => {
+        const expanded = trigger.getAttribute('aria-expanded') === 'true';
+        trigger.setAttribute('aria-expanded', String(!expanded));
+        const body = document.getElementById(trigger.getAttribute('aria-controls'));
+        if (body) body.classList.toggle('open', !expanded);
+      });
+    });
+  </script>
+</body>
+</html>

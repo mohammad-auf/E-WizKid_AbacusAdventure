@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc" preserveAspectRatio="xMidYMid meet" focusable="false">
+  <title id="title">Number garden</title>
+  <desc id="desc">A green sprouting leaf icon representing number learning and growth.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#FFFFFF"/><stop offset="1" stop-color="#EFFBF2"/></linearGradient>
+    <linearGradient id="leaf" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#64D37A"/><stop offset="1" stop-color="#38A95A"/></linearGradient>
+  </defs>
+  <rect x="3" y="3" width="114" height="114" rx="24" fill="url(#bg)" stroke="#D6EDD9" stroke-width="2"/>
+  <circle cx="95" cy="22" r="8" fill="#DFF5E5"/>
+  <path d="M34 54 C18 34 29 10 50 13 C55 28 50 44 34 54 Z" fill="#E9FAEC" stroke="url(#leaf)" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M45 67 C57 45 86 43 98 61 C85 78 63 83 45 67 Z" fill="#E9FAEC" stroke="url(#leaf)" stroke-width="7" stroke-linejoin="round"/>
+  <path d="M42 58 C52 66 59 74 62 91" fill="none" stroke="#2E8B4D" stroke-width="6" stroke-linecap="round"/>
+</svg>

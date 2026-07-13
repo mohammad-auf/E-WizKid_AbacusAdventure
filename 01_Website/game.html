@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="E-Wiz Kid Abacus Adventure – game screen. Move the beads to build the answer and submit." />
+  <meta name="theme-color" content="#19496D" />
+  <title>E-Wiz Kid | Playing</title>
+  <link rel="stylesheet" href="../02_Styles/main.css" />
+  <link rel="stylesheet" href="../02_Styles/game.css" />
+  <link rel="stylesheet" href="../02_Styles/responsive.css" />
+</head>
+<body style="background: var(--c-light-panel);">
+
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+
+  <!-- ── Compact Game Header / HUD ──────────────────────── -->
+  <header class="site-header" role="banner" style="height: auto; padding: 0;">
+    <div class="game-hud" role="toolbar" aria-label="Game controls and progress">
+
+      <!-- Left: activity name + question count -->
+      <div class="hud-group" aria-live="polite" aria-atomic="true">
+        <a href="activity-selection.html" class="btn btn--ghost btn--sm" id="game-home-btn" aria-label="Back to activity selection" style="border-radius: var(--r-md);">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="15,18 9,12 15,6"/></svg>
+          <span class="sr-only">Back</span>
+        </a>
+        <span class="hud-activity-name" id="hud-activity-name" aria-label="Current activity: Number Garden">Number Garden</span>
+        <div class="hud-item" aria-label="Question progress">
+          <span class="hud-item__label">Question</span>
+          <span class="hud-item__value" id="hud-question-count" aria-live="polite">1 / 6</span>
+        </div>
+      </div>
+
+      <!-- Center: score + stars -->
+      <div class="hud-group">
+        <div class="hud-item" aria-label="Current score">
+          <span class="hud-item__label">Score</span>
+          <span class="hud-item__value" id="hud-score" aria-live="polite">0</span>
+        </div>
+        <div class="hud-item" aria-label="Stars earned">
+          <span class="hud-item__label">Stars</span>
+          <div class="stars" id="hud-stars" role="img" aria-label="2 of 3 stars">
+            <svg class="star star--filled" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star star--filled" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            <svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: utility buttons -->
+      <div class="hud-controls">
+        <button class="hud-btn" id="game-sound-btn" aria-label="Toggle sound" aria-pressed="true" title="Sound">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="11,5 6,9 2,9 2,15 6,15 11,19 11,5"/><path d="M15.54 8.46a5 5 0 010 7.07"/></svg>
+        </button>
+        <button class="hud-btn" id="game-pause-btn" aria-label="Pause game" title="Pause">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="4" width="4" height="16"/><rect x="14" y="4" width="4" height="16"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ── Main Game Area ──────────────────────────────────── -->
+  <main id="main-content" class="game-main" role="main">
+
+    <!-- Question Panel -->
+    <section class="game-panel game-panel--question" aria-labelledby="question-label">
+      <div class="question-box">
+        <div class="question-number-badge" aria-hidden="true" id="question-badge">1</div>
+        <div class="question-text">
+          <p class="question-text__label" id="question-label">Your Question</p>
+          <p class="question-text__prompt" id="question-prompt" aria-live="polite">
+            Build the number 324.
+          </p>
+        </div>
+      </div>
+
+      <!-- Hint panel (hidden by default) -->
+      <div class="question-hint" id="hint-panel" hidden role="status" aria-live="polite">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 16v-4"/><path d="M12 8h.01"/></svg>
+        <span id="hint-text">Here is a helpful clue.</span>
+      </div>
+    </section>
+
+    <!-- Abacus Stage -->
+    <section class="game-panel game-panel--abacus" aria-labelledby="abacus-heading">
+      <h2 class="sr-only" id="abacus-heading">Interactive Abacus</h2>
+      <div class="abacus-stage" role="application" aria-label="Abacus – click or tap beads to move them">
+
+        <div class="abacus-frame">
+          <div class="abacus-rods">
+
+            <!-- Hundreds Rod -->
+            <div class="rod-column" role="group" aria-label="Hundreds rod – 3 active beads, value 300">
+              <div class="rod-column__rail" aria-hidden="true"></div>
+              <div class="rod-column__beads" id="rod-hundreds">
+                <!-- Inactive beads at top -->
+                <button class="bead bead--hundreds bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Hundreds bead 1 – inactive">
+                </button>
+                <button class="bead bead--hundreds bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Hundreds bead 2 – inactive">
+                </button>
+                <button class="bead bead--hundreds bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Hundreds bead 3 – inactive">
+                </button>
+                <!-- Active beads at bottom (pushed toward beam) -->
+                <button class="bead bead--hundreds bead--active"
+                  role="switch" aria-checked="true" aria-label="Hundreds bead 4 – active">
+                </button>
+                <button class="bead bead--hundreds bead--active"
+                  role="switch" aria-checked="true" aria-label="Hundreds bead 5 – active">
+                </button>
+                <button class="bead bead--hundreds bead--active"
+                  role="switch" aria-checked="true" aria-label="Hundreds bead 6 – active">
+                </button>
+              </div>
+              <span class="rod-column__label">Hundreds</span>
+            </div>
+
+            <!-- Tens Rod -->
+            <div class="rod-column" role="group" aria-label="Tens rod – 2 active beads, value 20">
+              <div class="rod-column__rail" aria-hidden="true"></div>
+              <div class="rod-column__beads" id="rod-tens">
+                <button class="bead bead--tens bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Tens bead 1 – inactive">
+                </button>
+                <button class="bead bead--tens bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Tens bead 2 – inactive">
+                </button>
+                <button class="bead bead--tens bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Tens bead 3 – inactive">
+                </button>
+                <button class="bead bead--tens bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Tens bead 4 – inactive">
+                </button>
+                <button class="bead bead--tens bead--active"
+                  role="switch" aria-checked="true" aria-label="Tens bead 5 – active">
+                </button>
+                <button class="bead bead--tens bead--active"
+                  role="switch" aria-checked="true" aria-label="Tens bead 6 – active">
+                </button>
+              </div>
+              <span class="rod-column__label">Tens</span>
+            </div>
+
+            <!-- Ones Rod -->
+            <div class="rod-column" role="group" aria-label="Ones rod – 4 active beads, value 4">
+              <div class="rod-column__rail" aria-hidden="true"></div>
+              <div class="rod-column__beads" id="rod-ones">
+                <button class="bead bead--ones bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Ones bead 1 – inactive">
+                </button>
+                <button class="bead bead--ones bead--inactive"
+                  role="switch" aria-checked="false" aria-label="Ones bead 2 – inactive">
+                </button>
+                <button class="bead bead--ones bead--active"
+                  role="switch" aria-checked="true" aria-label="Ones bead 3 – active">
+                </button>
+                <button class="bead bead--ones bead--active"
+                  role="switch" aria-checked="true" aria-label="Ones bead 4 – active">
+                </button>
+                <button class="bead bead--ones bead--active"
+                  role="switch" aria-checked="true" aria-label="Ones bead 5 – active">
+                </button>
+                <button class="bead bead--ones bead--active"
+                  role="switch" aria-checked="true" aria-label="Ones bead 6 – active">
+                </button>
+              </div>
+              <span class="rod-column__label">Ones</span>
+            </div>
+
+          </div><!-- /abacus-rods -->
+        </div><!-- /abacus-frame -->
+
+      </div><!-- /abacus-stage -->
+    </section>
+
+    <!-- Sidebar Controls -->
+    <aside class="game-panel game-panel--sidebar" aria-label="Game controls and number display">
+
+      <!-- Live number display -->
+      <div class="current-number-display" aria-live="polite" aria-atomic="true" aria-label="Current number on abacus">
+        <p class="current-number-display__label">Current Number</p>
+        <div class="current-number-display__value" id="current-number">324</div>
+      </div>
+
+      <!-- Action buttons -->
+      <div class="game-actions" role="group" aria-label="Game actions">
+        <button class="btn btn--submit" id="submit-btn" aria-label="Submit your answer">
+          <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24" aria-hidden="true"><polyline points="20,6 9,17 4,12"/></svg>
+          Submit Answer
+        </button>
+        <button class="btn btn--outline btn--hint" id="hint-btn" aria-label="Show a hint" aria-controls="hint-panel" aria-expanded="false">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 015.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          Hint
+        </button>
+        <button class="btn btn--outline btn--reset" id="reset-btn" aria-label="Reset abacus to zero">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polyline points="1,4 1,10 7,10"/><path d="M3.51 15a9 9 0 102.13-9.36L1 10"/></svg>
+          Reset Abacus
+        </button>
+      </div>
+
+      <!-- Stars in sidebar -->
+      <div class="sidebar-stars" aria-label="Stars earned this session">
+        <span class="sidebar-stars__label">Stars</span>
+        <div class="stars" role="img" aria-label="2 of 3 stars earned">
+          <svg class="star star--filled" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star star--filled" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          <svg class="star" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+        </div>
+      </div>
+
+    </aside>
+
+    <!-- Progress Footer -->
+    <footer class="game-panel game-panel--progress" role="contentinfo" aria-label="Session progress">
+      <div class="progress-info">
+        <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+        <span id="progress-label">Progress: 3 of 6</span>
+      </div>
+      <div class="progress-track flex-1" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100" aria-label="Question progress 50%">
+        <div class="progress-fill" id="progress-fill" style="width: 50%;"></div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- ── Feedback Overlay (hidden by default) ─────────────── -->
+  <div class="feedback-overlay feedback-overlay--correct" id="feedback-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="feedback-title">
+    <div class="feedback-card">
+      <div class="feedback-icon" aria-hidden="true">🎉</div>
+      <h2 class="feedback-title" id="feedback-title">Great counting!</h2>
+      <p class="feedback-message" id="feedback-message">You built the right number.</p>
+    </div>
+  </div>
+
+  <!-- ── Pause Modal (hidden by default) ──────────────────── -->
+  <div class="feedback-overlay" id="pause-overlay" hidden role="dialog" aria-modal="true" aria-labelledby="pause-title" style="background: rgba(15,45,69,.6); backdrop-filter: blur(6px);">
+    <div class="feedback-card">
+      <div class="feedback-icon" aria-hidden="true">⏸️</div>
+      <h2 class="feedback-title" id="pause-title" style="color: var(--c-deep-blue);">Game Paused</h2>
+      <p class="feedback-message">Take a break! Your progress is saved.</p>
+      <div style="display:flex; flex-direction:column; gap: var(--sp-3); margin-top: var(--sp-6);">
+        <button class="btn btn--primary" id="resume-btn" aria-label="Resume game">
+          <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" aria-hidden="true"><polygon points="5,3 19,12 5,21 5,3"/></svg>
+          Resume Game
+        </button>
+        <a href="activity-selection.html" class="btn btn--outline">Choose Activity</a>
+        <a href="index.html" class="btn btn--ghost">Home</a>
+      </div>
+    </div>
+  </div>
+
+  <script type="module" src="../03_Scripts/app.js?v=10"></script>
+  <script type="module" src="../03_Scripts/abacus-controller.js?v=10"></script>
+  <script type="module" src="../03_Scripts/game-engine.js?v=10"></script>
+</body>
+</html>
+
+

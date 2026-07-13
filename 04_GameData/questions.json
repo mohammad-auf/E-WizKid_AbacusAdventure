@@ -1,0 +1,817 @@
+{
+  "schema_version": "1.0",
+  "project": "E-Wiz Kid Abacus Adventure",
+  "instructions": "Load questions by activity and level. Do not hard-code all questions into HTML.",
+  "questions": [
+    {
+      "id": "Q001",
+      "activity": "number_garden",
+      "level": "beginner",
+      "prompt": "Build the number 1.",
+      "answer": 1,
+      "hint": "Use the place-value rods to make 1.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q002",
+      "activity": "number_garden",
+      "level": "beginner",
+      "prompt": "Build the number 2.",
+      "answer": 2,
+      "hint": "Use the place-value rods to make 2.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q003",
+      "activity": "number_garden",
+      "level": "beginner",
+      "prompt": "Build the number 4.",
+      "answer": 4,
+      "hint": "Use the place-value rods to make 4.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q004",
+      "activity": "number_garden",
+      "level": "beginner",
+      "prompt": "Build the number 5.",
+      "answer": 5,
+      "hint": "Use the place-value rods to make 5.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q005",
+      "activity": "number_garden",
+      "level": "beginner",
+      "prompt": "Build the number 7.",
+      "answer": 7,
+      "hint": "Use the place-value rods to make 7.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q006",
+      "activity": "number_garden",
+      "level": "beginner",
+      "prompt": "Build the number 9.",
+      "answer": 9,
+      "hint": "Use the place-value rods to make 9.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q007",
+      "activity": "number_garden",
+      "level": "intermediate",
+      "prompt": "Build the number 12.",
+      "answer": 12,
+      "hint": "Use the place-value rods to make 12.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q008",
+      "activity": "number_garden",
+      "level": "intermediate",
+      "prompt": "Build the number 24.",
+      "answer": 24,
+      "hint": "Use the place-value rods to make 24.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q009",
+      "activity": "number_garden",
+      "level": "intermediate",
+      "prompt": "Build the number 37.",
+      "answer": 37,
+      "hint": "Use the place-value rods to make 37.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q010",
+      "activity": "number_garden",
+      "level": "intermediate",
+      "prompt": "Build the number 45.",
+      "answer": 45,
+      "hint": "Use the place-value rods to make 45.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q011",
+      "activity": "number_garden",
+      "level": "intermediate",
+      "prompt": "Build the number 68.",
+      "answer": 68,
+      "hint": "Use the place-value rods to make 68.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q012",
+      "activity": "number_garden",
+      "level": "intermediate",
+      "prompt": "Build the number 91.",
+      "answer": 91,
+      "hint": "Use the place-value rods to make 91.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q013",
+      "activity": "number_garden",
+      "level": "advanced",
+      "prompt": "Build the number 105.",
+      "answer": 105,
+      "hint": "Use the place-value rods to make 105.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q014",
+      "activity": "number_garden",
+      "level": "advanced",
+      "prompt": "Build the number 219.",
+      "answer": 219,
+      "hint": "Use the place-value rods to make 219.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q015",
+      "activity": "number_garden",
+      "level": "advanced",
+      "prompt": "Build the number 340.",
+      "answer": 340,
+      "hint": "Use the place-value rods to make 340.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q016",
+      "activity": "number_garden",
+      "level": "advanced",
+      "prompt": "Build the number 476.",
+      "answer": 476,
+      "hint": "Use the place-value rods to make 476.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q017",
+      "activity": "number_garden",
+      "level": "advanced",
+      "prompt": "Build the number 582.",
+      "answer": 582,
+      "hint": "Use the place-value rods to make 582.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q018",
+      "activity": "number_garden",
+      "level": "advanced",
+      "prompt": "Build the number 907.",
+      "answer": 907,
+      "hint": "Use the place-value rods to make 907.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q019",
+      "activity": "addition_bridge",
+      "level": "beginner",
+      "prompt": "What is 1 + 2? Build the answer.",
+      "answer": 3,
+      "hint": "Add 2 to 1, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q020",
+      "activity": "addition_bridge",
+      "level": "beginner",
+      "prompt": "What is 2 + 3? Build the answer.",
+      "answer": 5,
+      "hint": "Add 3 to 2, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q021",
+      "activity": "addition_bridge",
+      "level": "beginner",
+      "prompt": "What is 4 + 1? Build the answer.",
+      "answer": 5,
+      "hint": "Add 1 to 4, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q022",
+      "activity": "addition_bridge",
+      "level": "beginner",
+      "prompt": "What is 3 + 5? Build the answer.",
+      "answer": 8,
+      "hint": "Add 5 to 3, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q023",
+      "activity": "addition_bridge",
+      "level": "beginner",
+      "prompt": "What is 6 + 2? Build the answer.",
+      "answer": 8,
+      "hint": "Add 2 to 6, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q024",
+      "activity": "addition_bridge",
+      "level": "beginner",
+      "prompt": "What is 5 + 4? Build the answer.",
+      "answer": 9,
+      "hint": "Add 4 to 5, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q025",
+      "activity": "addition_bridge",
+      "level": "intermediate",
+      "prompt": "What is 12 + 6? Build the answer.",
+      "answer": 18,
+      "hint": "Add 6 to 12, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q026",
+      "activity": "addition_bridge",
+      "level": "intermediate",
+      "prompt": "What is 24 + 15? Build the answer.",
+      "answer": 39,
+      "hint": "Add 15 to 24, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q027",
+      "activity": "addition_bridge",
+      "level": "intermediate",
+      "prompt": "What is 31 + 27? Build the answer.",
+      "answer": 58,
+      "hint": "Add 27 to 31, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q028",
+      "activity": "addition_bridge",
+      "level": "intermediate",
+      "prompt": "What is 46 + 12? Build the answer.",
+      "answer": 58,
+      "hint": "Add 12 to 46, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q029",
+      "activity": "addition_bridge",
+      "level": "intermediate",
+      "prompt": "What is 53 + 29? Build the answer.",
+      "answer": 82,
+      "hint": "Add 29 to 53, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q030",
+      "activity": "addition_bridge",
+      "level": "intermediate",
+      "prompt": "What is 64 + 18? Build the answer.",
+      "answer": 82,
+      "hint": "Add 18 to 64, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q031",
+      "activity": "addition_bridge",
+      "level": "advanced",
+      "prompt": "What is 105 + 23? Build the answer.",
+      "answer": 128,
+      "hint": "Add 23 to 105, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q032",
+      "activity": "addition_bridge",
+      "level": "advanced",
+      "prompt": "What is 217 + 42? Build the answer.",
+      "answer": 259,
+      "hint": "Add 42 to 217, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q033",
+      "activity": "addition_bridge",
+      "level": "advanced",
+      "prompt": "What is 340 + 159? Build the answer.",
+      "answer": 499,
+      "hint": "Add 159 to 340, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q034",
+      "activity": "addition_bridge",
+      "level": "advanced",
+      "prompt": "What is 476 + 112? Build the answer.",
+      "answer": 588,
+      "hint": "Add 112 to 476, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q035",
+      "activity": "addition_bridge",
+      "level": "advanced",
+      "prompt": "What is 508 + 231? Build the answer.",
+      "answer": 739,
+      "hint": "Add 231 to 508, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q036",
+      "activity": "addition_bridge",
+      "level": "advanced",
+      "prompt": "What is 625 + 174? Build the answer.",
+      "answer": 799,
+      "hint": "Add 174 to 625, then check hundreds, tens, and ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q037",
+      "activity": "subtraction_cave",
+      "level": "beginner",
+      "prompt": "What is 5 - 2? Build the answer.",
+      "answer": 3,
+      "hint": "Start at 5 and remove 2.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q038",
+      "activity": "subtraction_cave",
+      "level": "beginner",
+      "prompt": "What is 7 - 3? Build the answer.",
+      "answer": 4,
+      "hint": "Start at 7 and remove 3.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q039",
+      "activity": "subtraction_cave",
+      "level": "beginner",
+      "prompt": "What is 9 - 4? Build the answer.",
+      "answer": 5,
+      "hint": "Start at 9 and remove 4.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q040",
+      "activity": "subtraction_cave",
+      "level": "beginner",
+      "prompt": "What is 8 - 1? Build the answer.",
+      "answer": 7,
+      "hint": "Start at 8 and remove 1.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q041",
+      "activity": "subtraction_cave",
+      "level": "beginner",
+      "prompt": "What is 6 - 5? Build the answer.",
+      "answer": 1,
+      "hint": "Start at 6 and remove 5.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q042",
+      "activity": "subtraction_cave",
+      "level": "beginner",
+      "prompt": "What is 8 - 2? Build the answer.",
+      "answer": 6,
+      "hint": "Start at 8 and remove 2.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q043",
+      "activity": "subtraction_cave",
+      "level": "intermediate",
+      "prompt": "What is 18 - 7? Build the answer.",
+      "answer": 11,
+      "hint": "Start at 18 and remove 7.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q044",
+      "activity": "subtraction_cave",
+      "level": "intermediate",
+      "prompt": "What is 36 - 12? Build the answer.",
+      "answer": 24,
+      "hint": "Start at 36 and remove 12.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q045",
+      "activity": "subtraction_cave",
+      "level": "intermediate",
+      "prompt": "What is 52 - 21? Build the answer.",
+      "answer": 31,
+      "hint": "Start at 52 and remove 21.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q046",
+      "activity": "subtraction_cave",
+      "level": "intermediate",
+      "prompt": "What is 67 - 25? Build the answer.",
+      "answer": 42,
+      "hint": "Start at 67 and remove 25.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q047",
+      "activity": "subtraction_cave",
+      "level": "intermediate",
+      "prompt": "What is 84 - 32? Build the answer.",
+      "answer": 52,
+      "hint": "Start at 84 and remove 32.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q048",
+      "activity": "subtraction_cave",
+      "level": "intermediate",
+      "prompt": "What is 95 - 46? Build the answer.",
+      "answer": 49,
+      "hint": "Start at 95 and remove 46.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q049",
+      "activity": "subtraction_cave",
+      "level": "advanced",
+      "prompt": "What is 128 - 24? Build the answer.",
+      "answer": 104,
+      "hint": "Start at 128 and remove 24.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q050",
+      "activity": "subtraction_cave",
+      "level": "advanced",
+      "prompt": "What is 260 - 115? Build the answer.",
+      "answer": 145,
+      "hint": "Start at 260 and remove 115.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q051",
+      "activity": "subtraction_cave",
+      "level": "advanced",
+      "prompt": "What is 431 - 208? Build the answer.",
+      "answer": 223,
+      "hint": "Start at 431 and remove 208.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q052",
+      "activity": "subtraction_cave",
+      "level": "advanced",
+      "prompt": "What is 590 - 147? Build the answer.",
+      "answer": 443,
+      "hint": "Start at 590 and remove 147.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q053",
+      "activity": "subtraction_cave",
+      "level": "advanced",
+      "prompt": "What is 704 - 253? Build the answer.",
+      "answer": 451,
+      "hint": "Start at 704 and remove 253.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q054",
+      "activity": "subtraction_cave",
+      "level": "advanced",
+      "prompt": "What is 999 - 486? Build the answer.",
+      "answer": 513,
+      "hint": "Start at 999 and remove 486.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q055",
+      "activity": "place_value_tower",
+      "level": "beginner",
+      "prompt": "Build 0 hundreds, 0 tens, and 3 ones.",
+      "answer": 3,
+      "hint": "Place 0 on Hundreds, 0 on Tens, and 3 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q056",
+      "activity": "place_value_tower",
+      "level": "beginner",
+      "prompt": "Build 0 hundreds, 0 tens, and 5 ones.",
+      "answer": 5,
+      "hint": "Place 0 on Hundreds, 0 on Tens, and 5 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q057",
+      "activity": "place_value_tower",
+      "level": "beginner",
+      "prompt": "Build 0 hundreds, 0 tens, and 7 ones.",
+      "answer": 7,
+      "hint": "Place 0 on Hundreds, 0 on Tens, and 7 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q058",
+      "activity": "place_value_tower",
+      "level": "beginner",
+      "prompt": "Build 0 hundreds, 0 tens, and 8 ones.",
+      "answer": 8,
+      "hint": "Place 0 on Hundreds, 0 on Tens, and 8 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q059",
+      "activity": "place_value_tower",
+      "level": "beginner",
+      "prompt": "Build 0 hundreds, 0 tens, and 9 ones.",
+      "answer": 9,
+      "hint": "Place 0 on Hundreds, 0 on Tens, and 9 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q060",
+      "activity": "place_value_tower",
+      "level": "beginner",
+      "prompt": "Build 0 hundreds, 0 tens, and 6 ones.",
+      "answer": 6,
+      "hint": "Place 0 on Hundreds, 0 on Tens, and 6 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q061",
+      "activity": "place_value_tower",
+      "level": "intermediate",
+      "prompt": "Build 0 hundreds, 1 tens, and 4 ones.",
+      "answer": 14,
+      "hint": "Place 0 on Hundreds, 1 on Tens, and 4 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q062",
+      "activity": "place_value_tower",
+      "level": "intermediate",
+      "prompt": "Build 0 hundreds, 2 tens, and 8 ones.",
+      "answer": 28,
+      "hint": "Place 0 on Hundreds, 2 on Tens, and 8 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q063",
+      "activity": "place_value_tower",
+      "level": "intermediate",
+      "prompt": "Build 0 hundreds, 5 tens, and 3 ones.",
+      "answer": 53,
+      "hint": "Place 0 on Hundreds, 5 on Tens, and 3 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q064",
+      "activity": "place_value_tower",
+      "level": "intermediate",
+      "prompt": "Build 0 hundreds, 6 tens, and 7 ones.",
+      "answer": 67,
+      "hint": "Place 0 on Hundreds, 6 on Tens, and 7 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q065",
+      "activity": "place_value_tower",
+      "level": "intermediate",
+      "prompt": "Build 0 hundreds, 8 tens, and 2 ones.",
+      "answer": 82,
+      "hint": "Place 0 on Hundreds, 8 on Tens, and 2 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q066",
+      "activity": "place_value_tower",
+      "level": "intermediate",
+      "prompt": "Build 0 hundreds, 9 tens, and 6 ones.",
+      "answer": 96,
+      "hint": "Place 0 on Hundreds, 9 on Tens, and 6 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q067",
+      "activity": "place_value_tower",
+      "level": "advanced",
+      "prompt": "Build 1 hundreds, 2 tens, and 4 ones.",
+      "answer": 124,
+      "hint": "Place 1 on Hundreds, 2 on Tens, and 4 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q068",
+      "activity": "place_value_tower",
+      "level": "advanced",
+      "prompt": "Build 3 hundreds, 0 tens, and 5 ones.",
+      "answer": 305,
+      "hint": "Place 3 on Hundreds, 0 on Tens, and 5 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q069",
+      "activity": "place_value_tower",
+      "level": "advanced",
+      "prompt": "Build 4 hundreds, 1 tens, and 8 ones.",
+      "answer": 418,
+      "hint": "Place 4 on Hundreds, 1 on Tens, and 8 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q070",
+      "activity": "place_value_tower",
+      "level": "advanced",
+      "prompt": "Build 5 hundreds, 7 tens, and 2 ones.",
+      "answer": 572,
+      "hint": "Place 5 on Hundreds, 7 on Tens, and 2 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q071",
+      "activity": "place_value_tower",
+      "level": "advanced",
+      "prompt": "Build 6 hundreds, 4 tens, and 0 ones.",
+      "answer": 640,
+      "hint": "Place 6 on Hundreds, 4 on Tens, and 0 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q072",
+      "activity": "place_value_tower",
+      "level": "advanced",
+      "prompt": "Build 8 hundreds, 9 tens, and 3 ones.",
+      "answer": 893,
+      "hint": "Place 8 on Hundreds, 9 on Tens, and 3 on Ones.",
+      "preview_seconds": 0
+    },
+    {
+      "id": "Q073",
+      "activity": "pattern_train",
+      "level": "beginner",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 2,
+      "hint": "The number has 0 hundreds, 0 tens, and 2 ones.",
+      "preview_seconds": 4
+    },
+    {
+      "id": "Q074",
+      "activity": "pattern_train",
+      "level": "beginner",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 4,
+      "hint": "The number has 0 hundreds, 0 tens, and 4 ones.",
+      "preview_seconds": 4
+    },
+    {
+      "id": "Q075",
+      "activity": "pattern_train",
+      "level": "beginner",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 6,
+      "hint": "The number has 0 hundreds, 0 tens, and 6 ones.",
+      "preview_seconds": 4
+    },
+    {
+      "id": "Q076",
+      "activity": "pattern_train",
+      "level": "beginner",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 8,
+      "hint": "The number has 0 hundreds, 0 tens, and 8 ones.",
+      "preview_seconds": 4
+    },
+    {
+      "id": "Q077",
+      "activity": "pattern_train",
+      "level": "beginner",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 9,
+      "hint": "The number has 0 hundreds, 0 tens, and 9 ones.",
+      "preview_seconds": 4
+    },
+    {
+      "id": "Q078",
+      "activity": "pattern_train",
+      "level": "beginner",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 7,
+      "hint": "The number has 0 hundreds, 0 tens, and 7 ones.",
+      "preview_seconds": 4
+    },
+    {
+      "id": "Q079",
+      "activity": "pattern_train",
+      "level": "intermediate",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 13,
+      "hint": "The number has 0 hundreds, 1 tens, and 3 ones.",
+      "preview_seconds": 3
+    },
+    {
+      "id": "Q080",
+      "activity": "pattern_train",
+      "level": "intermediate",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 26,
+      "hint": "The number has 0 hundreds, 2 tens, and 6 ones.",
+      "preview_seconds": 3
+    },
+    {
+      "id": "Q081",
+      "activity": "pattern_train",
+      "level": "intermediate",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 41,
+      "hint": "The number has 0 hundreds, 4 tens, and 1 ones.",
+      "preview_seconds": 3
+    },
+    {
+      "id": "Q082",
+      "activity": "pattern_train",
+      "level": "intermediate",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 58,
+      "hint": "The number has 0 hundreds, 5 tens, and 8 ones.",
+      "preview_seconds": 3
+    },
+    {
+      "id": "Q083",
+      "activity": "pattern_train",
+      "level": "intermediate",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 73,
+      "hint": "The number has 0 hundreds, 7 tens, and 3 ones.",
+      "preview_seconds": 3
+    },
+    {
+      "id": "Q084",
+      "activity": "pattern_train",
+      "level": "intermediate",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 95,
+      "hint": "The number has 0 hundreds, 9 tens, and 5 ones.",
+      "preview_seconds": 3
+    },
+    {
+      "id": "Q085",
+      "activity": "pattern_train",
+      "level": "advanced",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 132,
+      "hint": "The number has 1 hundreds, 3 tens, and 2 ones.",
+      "preview_seconds": 2
+    },
+    {
+      "id": "Q086",
+      "activity": "pattern_train",
+      "level": "advanced",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 247,
+      "hint": "The number has 2 hundreds, 4 tens, and 7 ones.",
+      "preview_seconds": 2
+    },
+    {
+      "id": "Q087",
+      "activity": "pattern_train",
+      "level": "advanced",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 360,
+      "hint": "The number has 3 hundreds, 6 tens, and 0 ones.",
+      "preview_seconds": 2
+    },
+    {
+      "id": "Q088",
+      "activity": "pattern_train",
+      "level": "advanced",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 514,
+      "hint": "The number has 5 hundreds, 1 tens, and 4 ones.",
+      "preview_seconds": 2
+    },
+    {
+      "id": "Q089",
+      "activity": "pattern_train",
+      "level": "advanced",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 681,
+      "hint": "The number has 6 hundreds, 8 tens, and 1 ones.",
+      "preview_seconds": 2
+    },
+    {
+      "id": "Q090",
+      "activity": "pattern_train",
+      "level": "advanced",
+      "prompt": "Watch the bead pattern, then rebuild it from memory.",
+      "answer": 925,
+      "hint": "The number has 9 hundreds, 2 tens, and 5 ones.",
+      "preview_seconds": 2
+    }
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "soundEnabled": true,
+  "lastActivity": "number_garden",
+  "lastLevel": "beginner",
+  "totalStars": 5,
+  "completed": {
+    "number_garden": {
+      "beginner": {
+        "score": 6,
+        "stars": 3
+      }
+    },
+    "addition_bridge": {
+      "beginner": {
+        "score": 4,
+        "stars": 2
+      }
+    }
+  }
+}

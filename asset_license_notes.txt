@@ -1,0 +1,137 @@
+E-WIZ KID ABACUS ADVENTURE — ASSET LICENCE NOTES
+============================================================
+
+This file tracks the licence status of every third-party asset
+used in the project (images, icons, audio, fonts).
+
+IMPORTANT: All assets must be documented here BEFORE they are
+added to the 05_Assets/ directory or any other project folder.
+Using an unlicensed asset is a copyright violation.
+
+------------------------------------------------------------
+
+HOW TO COMPLETE THIS FILE
+------------------------------------------------------------
+
+When adding a new asset, add an entry using this template:
+
+  File:       05_Assets/<folder>/<filename>
+  Source:     URL where the asset was obtained
+  Author:     Creator's name or studio
+  Licence:    Full licence name (e.g., CC0, CC BY 4.0, OFL, MIT)
+  Licence URL: Link to the full licence text
+  Modifications: None | [describe any edits made]
+  Phase Added: Phase number
+
+------------------------------------------------------------
+
+ACCEPTABLE LICENCES
+------------------------------------------------------------
+
+The following licence types are approved for use in this project:
+
+  ✅ CC0 (Creative Commons Zero / Public Domain)
+  ✅ CC BY 4.0 (Attribution required — credit in this file is sufficient)
+  ✅ CC BY-SA 4.0 (Attribution + Share-Alike)
+  ✅ MIT (for code-based assets / icon libraries)
+  ✅ Apache 2.0
+  ✅ Open Font Licence (OFL) — for typefaces only
+  ✅ Royalty-Free (confirmed, with source URL)
+  ✅ Custom permission (written confirmation required)
+
+The following licence types are NOT approved:
+  ❌ CC BY-NC (Non-Commercial only — not suitable if project is commercial)
+  ❌ CC BY-ND (No Derivatives — cannot modify the asset)
+  ❌ Stock with Standard Licence (typically prohibits digital distribution)
+  ❌ Unknown / unverified licence
+
+------------------------------------------------------------
+
+PHASE 1 ASSETS
+------------------------------------------------------------
+
+No media assets are included in Phase 1 (foundation only).
+Placeholder README files in each asset folder describe
+expected future assets.
+
+------------------------------------------------------------
+
+PHASE 2 ASSETS
+(To be completed when UI design is implemented)
+------------------------------------------------------------
+
+IMAGES
+------
+[ No images added yet ]
+
+ICONS
+-----
+[ No icons added yet ]
+
+FONTS
+-----
+File:         05_Assets/fonts/Nunito-*.woff2 (to be added)
+Source:       https://fonts.google.com/specimen/Nunito
+Author:       Vernon Adams, Cyreal, Jacques Le Bailly
+Licence:      Open Font Licence (OFL) 1.1
+Licence URL:  https://openfontlicense.org/
+Modifications: To be subset to Latin character set only
+Phase Added:  Phase 2
+
+------------------------------------------------------------
+
+PHASE 3 ASSETS
+(To be completed when audio is sourced)
+------------------------------------------------------------
+
+AUDIO — SFX
+-----------
+[ Add SFX entries here ]
+
+AUDIO — MUSIC
+-------------
+[ Add music entries here ]
+
+------------------------------------------------------------
+
+RECOMMENDED SOURCES FOR FUTURE ASSETS
+------------------------------------------------------------
+
+Images / Illustrations:
+  - unDraw (https://undraw.co) — MIT, free SVG illustrations
+  - Pixabay (https://pixabay.com) — CC0 photos and vectors
+  - OpenClipart (https://openclipart.org) — CC0 SVGs
+
+Icons:
+  - Heroicons (https://heroicons.com) — MIT
+  - Phosphor Icons (https://phosphoricons.com) — MIT
+  - Feather Icons (https://feathericons.com) — MIT
+  - Google Material Symbols (https://fonts.google.com/icons) — Apache 2.0
+
+Audio SFX:
+  - freesound.org (https://freesound.org) — filter by CC0
+  - ZapSplat (https://zapsplat.com) — free with attribution
+
+Audio Music:
+  - Kevin MacLeod / incompetech.com (CC BY 4.0)
+  - OpenGameArt.org (https://opengameart.org) — CC0 and CC BY
+
+Fonts:
+  - Google Fonts (https://fonts.google.com) — mostly OFL
+
+------------------------------------------------------------
+
+LEGAL NOTICE
+------------------------------------------------------------
+
+This document is maintained for internal copyright compliance.
+All team members are responsible for:
+1. Verifying the licence of any asset before use.
+2. Updating this file immediately when adding an asset.
+3. Retaining original source files for licence verification.
+
+When in doubt, do not use the asset — find a clearly licenced alternative.
+
+============================================================
+END OF FILE
+============================================================

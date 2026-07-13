@@ -1,0 +1,72 @@
+E-WIZ KID ABACUS ADVENTURE — SOURCE CREDITS
+============================================================
+
+This file tracks all third-party libraries, code snippets, tools,
+and open-source references used in the project.
+
+Update this file whenever a third-party resource is incorporated.
+
+FORMAT:
+  Resource Name
+  Source:    URL or publication
+  Licence:   Licence type
+  Usage:     How it is used in the project
+  Phase:     Phase in which it was incorporated
+
+------------------------------------------------------------
+
+PHASE 1 CREDITS
+------------------------------------------------------------
+
+Resource:  Andy Bell's Modern CSS Reset
+Source:    https://piccalil.li/blog/a-modern-css-reset/
+Licence:   MIT / Creative Commons (free to use)
+Usage:     Adapted for the base CSS reset in 02_Styles/main.css (Section 1)
+Phase:     Phase 1
+
+Resource:  Nunito Typeface (planned for Phase 2)
+Source:    https://fonts.google.com/specimen/Nunito
+           Author: Vernon Adams, Cyreal, Jacques Le Bailly
+Licence:   Open Font Licence (OFL) — free to use, modify, distribute
+Usage:     Primary display and body typeface for the application
+Phase:     Phase 2 (referenced in Phase 1 documentation)
+
+Resource:  Fisher-Yates Shuffle Algorithm
+Source:    Knuth, D. (1998). The Art of Computer Programming.
+           Reference implementation: https://bost.ocks.org/mike/shuffle/
+Licence:   Public domain algorithm
+Usage:     shuffle() function in 03_Scripts/utils.js (Section 4)
+Phase:     Phase 1
+
+------------------------------------------------------------
+
+PHASE 2 CREDITS
+(To be completed when Phase 2 assets are incorporated)
+------------------------------------------------------------
+
+[ Add entries here ]
+
+------------------------------------------------------------
+
+PHASE 3+ CREDITS
+(To be completed as development progresses)
+------------------------------------------------------------
+
+[ Add entries here ]
+
+------------------------------------------------------------
+
+NOTES
+------------------------------------------------------------
+
+- All "To be added" entries must be completed BEFORE using any
+  third-party resource in the project.
+- When in doubt about a resource's licence, do not use it until
+  the licence is confirmed.
+- Prefer CC0, MIT, Apache 2.0, and OFL licences for all assets.
+- See also: 06_Documentation/asset_license_notes.txt for
+  media-specific licence tracking.
+
+============================================================
+END OF FILE
+============================================================
