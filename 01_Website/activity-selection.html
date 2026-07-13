@@ -337,18 +337,15 @@
         <h1 class="page-header__title" style="font-size: var(--fs-2xl); font-weight: var(--fw-xblk); color: var(--c-deep-blue); margin-bottom: var(--sp-6);">Choose Activity</h1>
         
         <!-- Segmented Difficulty Selector -->
-        <div class="difficulty-toggle">
-          <button class="diff-btn active" data-level="beginner">
-            <span class="diff-btn__icon">🌱</span>
-            <span class="diff-btn__text">Beginner</span>
+        <div class="difficulty-toggle" style="display: flex; justify-content: center; background: rgba(255,255,255,0.7); border-radius: 999px; padding: 6px; box-shadow: var(--sh-sm); max-width: 600px; margin: 0 auto var(--sp-2); border: 2px solid var(--c-border); overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none;">
+          <button class="diff-btn active" data-level="beginner" style="flex: 1; min-width: 110px; padding: 10px 16px; border-radius: 999px; border: none; font-weight: var(--fw-bold); font-size: 1rem; cursor: pointer; transition: all 0.3s ease; background: var(--c-bright-blue); color: white; box-shadow: 0 4px 10px rgba(58,134,255,0.3); white-space: nowrap;">
+            🌱 Beginner
           </button>
-          <button class="diff-btn" data-level="intermediate">
-            <span class="diff-btn__icon">🌿</span>
-            <span class="diff-btn__text">Intermediate</span>
+          <button class="diff-btn" data-level="intermediate" style="flex: 1; min-width: 130px; padding: 10px 16px; border-radius: 999px; border: none; font-weight: var(--fw-bold); font-size: 1rem; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--c-deep-blue); white-space: nowrap;">
+            🌿 Intermediate
           </button>
-          <button class="diff-btn" data-level="advanced">
-            <span class="diff-btn__icon">🌳</span>
-            <span class="diff-btn__text">Advanced</span>
+          <button class="diff-btn" data-level="advanced" style="flex: 1; min-width: 110px; padding: 10px 16px; border-radius: 999px; border: none; font-weight: var(--fw-bold); font-size: 1rem; cursor: pointer; transition: all 0.3s ease; background: transparent; color: var(--c-deep-blue); white-space: nowrap;">
+            🌳 Advanced
           </button>
         </div>
         <p id="diff-desc" style="font-size: var(--fs-sm); font-weight: var(--fw-semi); color: var(--c-text-light); text-transform: uppercase; letter-spacing: 1px;">Numbers 0 to 10</p>
@@ -373,7 +370,7 @@
               <p class="activity-card__desc">Build the number shown.</p>
             </div>
             <div class="activity-card__footer">
-              <span class="activity-card__progress-text">Stars Earned: 0 / 3</span>
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
               <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -395,7 +392,7 @@
               <p class="activity-card__desc">Add the numbers and show the answer.</p>
             </div>
             <div class="activity-card__footer">
-              <span class="activity-card__progress-text">Stars Earned: 0 / 3</span>
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
               <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -418,7 +415,7 @@
               <p class="activity-card__desc">Subtract and build the answer.</p>
             </div>
             <div class="activity-card__footer">
-              <span class="activity-card__progress-text">Stars Earned: 0 / 3</span>
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
               <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -442,7 +439,7 @@
               <p class="activity-card__desc">Explore hundreds, tens, and ones.</p>
             </div>
             <div class="activity-card__footer">
-              <span class="activity-card__progress-text">Stars Earned: 0 / 3</span>
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
               <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
@@ -467,7 +464,7 @@
               <p class="activity-card__desc">Remember the pattern and rebuild it.</p>
             </div>
             <div class="activity-card__footer">
-              <span class="activity-card__progress-text">Stars Earned: 0 / 3</span>
+              <span class="activity-card__progress-text">Progress: 0 / 3 stars</span>
               <div class="activity-card__stars" role="img" aria-label="0 of 3 stars earned">
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
                 <svg viewBox="0 0 24 24" fill="none" stroke="#D1D5DB" stroke-width="1.5" aria-hidden="true"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>

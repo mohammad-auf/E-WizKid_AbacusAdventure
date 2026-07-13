@@ -21,10 +21,13 @@
   padding: var(--sp-3) var(--sp-6);
   background: var(--c-white);
   border-bottom: 3px solid var(--c-border);
-  gap: var(--sp-4);
-  flex-wrap: wrap;
+  gap: var(--sp-2);
+  flex-wrap: nowrap;
+  overflow-x: auto;
   box-shadow: 0 4px 0 rgba(0,0,0,0.05);
   z-index: 10;
+  /* Ensure controls never clip on small screens */
+  min-width: 0;
 }
 
 .hud-group {
@@ -247,10 +250,10 @@
   position: absolute;
   top: 0;
   bottom: 40px; /* above label */
-  width: 12px;
-  background: linear-gradient(180deg, #8BA5BC, #425B73);
+  width: 10px;
+  background: linear-gradient(180deg, #E0C068, #C49A20, #E0C068);
   border-radius: var(--r-full);
-  box-shadow: inset 2px 0 4px rgba(0,0,0,.25), 1px 0 0 rgba(255,255,255,.4);
+  box-shadow: 0 0 6px rgba(255,200,50,.6), inset 2px 0 3px rgba(255,255,255,.5), -1px 0 0 rgba(0,0,0,.3);
   left: 50%;
   transform: translateX(-50%);
 }
@@ -299,7 +302,7 @@
   background: linear-gradient(180deg, #94A3B8, #64748B); /* Light grey */
   border-color: rgba(255,255,255,0.2);
   box-shadow: none;
-  opacity: 1;
+  opacity: 0.8;
 }
 
 /* Bead active (pushed toward beam) */

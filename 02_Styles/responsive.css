@@ -24,10 +24,9 @@ html, body { overflow-x: hidden; width: 100%; }
   min-height: var(--hdr-h);
 }
 .site-header__inner {
-  flex-wrap: nowrap;
-  gap: var(--sp-1);
+  flex-wrap: wrap;
+  gap: var(--sp-2);
   padding-block: var(--sp-2);
-  justify-content: space-between;
 }
 .site-header__nav {
   gap: var(--sp-1);
@@ -35,14 +34,11 @@ html, body { overflow-x: hidden; width: 100%; }
 }
 .nav-link {
   font-size: 0.75rem;
-  padding: var(--sp-1) 4px;
+  padding: var(--sp-1) var(--sp-2);
 }
-.site-header__logo { gap: var(--sp-1); }
-.logo-badge { width: 32px; height: 32px; }
 .nav-link svg { display: none; }
 .logo-text__sub { display: none; }
-.logo-text__name { font-size: 0.9rem; }
-.sound-btn { width: 32px; height: 32px; padding: 4px; }
+.logo-text__name { font-size: var(--fs-base); }
 
 /* ── Hero (Home Page) ────────────────────────────────────── */
 .hero { padding: var(--sp-6) 0 var(--sp-8); }
@@ -62,9 +58,6 @@ html, body { overflow-x: hidden; width: 100%; }
 .hero__actions .btn { width: 100%; justify-content: center; }
 .hero__title { font-size: clamp(1.8rem, 7vw, 3rem); }
 .hero__subtitle { font-size: var(--fs-base); }
-
-/* Game HUD */
-#hud-title { display: none !important; }
 .hero-features { gap: var(--sp-2); justify-content: center; }
 .hero-feature { font-size: var(--fs-xs); padding: var(--sp-1) var(--sp-3); }
 
@@ -170,15 +163,21 @@ html, body { overflow-x: hidden; width: 100%; }
 
 /* HUD: compact at mobile */
 .game-hud {
-  padding: var(--sp-2) var(--sp-3);
+  padding: var(--sp-2) var(--sp-2);
   gap: var(--sp-2);
   flex-wrap: nowrap;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* hide scrollbar but keep scrollable */
 }
-.hud-group { gap: var(--sp-3); }
-.hud-item__value { font-size: var(--fs-lg); }
-.hud-item__label { font-size: 0.6rem; }
-.hud-activity-name { font-size: var(--fs-xs); padding: 2px var(--sp-2); }
-.hud-btn { width: 36px; height: 36px; }
+.game-hud::-webkit-scrollbar { display: none; }
+.hud-group { gap: var(--sp-2); flex-shrink: 0; }
+.hud-item { padding: var(--sp-1) var(--sp-2); }
+.hud-item__value { font-size: var(--fs-base); }
+.hud-item__label { font-size: 0.55rem; }
+.hud-activity-name { font-size: var(--fs-xs); padding: 2px var(--sp-2); flex-shrink: 0; }
+.hud-btn { width: 34px; height: 34px; flex-shrink: 0; }
+.hud-controls { flex-shrink: 0; gap: var(--sp-1); }
 
 /* Question panel mobile */
 .question-text__prompt { font-size: var(--fs-lg); }
@@ -522,10 +521,5 @@ html, body { overflow-x: hidden; width: 100%; }
   .activity-card__stars svg { width: 20px; height: 20px; }
   .back-link { font-size: var(--fs-xs); }
   .page-header__subtitle { font-size: var(--fs-sm); }
-  .help-banner::before,
-  .help-banner::after { display: none; }
-  
-  .difficulty-toggle { padding: 4px; }
-  .diff-btn { padding: 8px 12px; gap: 4px; flex-direction: column; }
-  .diff-btn__icon { font-size: 1.2rem; }
+  .progress-summary__divider { display: none; }
 }
