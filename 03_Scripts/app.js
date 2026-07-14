@@ -141,9 +141,25 @@ async function initActivityPage() {
   log('Activity page controller invoked.');
 
   // Segmented Difficulty Toggle Logic
+  const LEVEL_RANGES = {
+    beginner:     'Numbers 0 to 10',
+    intermediate: 'Numbers 10 to 99',
+    advanced:     'Numbers 100 to 999',
+  };
+
   let currentLevel = 'beginner';
   const diffBtns = document.querySelectorAll('.diff-btn');
   const activityCards = document.querySelectorAll('.activity-card');
+  const diffDesc = document.getElementById('diff-desc');
+
+  function updateDiffDesc(level) {
+    if (diffDesc) {
+      diffDesc.textContent = LEVEL_RANGES[level] || '';
+    }
+  }
+
+  // Set initial label
+  updateDiffDesc(currentLevel);
   
   diffBtns.forEach(btn => {
     btn.addEventListener('click', () => {
@@ -160,6 +176,9 @@ async function initActivityPage() {
       btn.style.boxShadow = '0 4px 10px rgba(58,134,255,0.3)';
       
       currentLevel = btn.dataset.level;
+
+      // Update the number range label
+      updateDiffDesc(currentLevel);
       
       // Update links on cards
       activityCards.forEach(card => {

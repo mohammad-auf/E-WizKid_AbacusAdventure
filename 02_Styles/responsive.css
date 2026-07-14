@@ -179,6 +179,34 @@ html, body { overflow-x: hidden; width: 100%; }
 .hud-btn { width: 34px; height: 34px; flex-shrink: 0; }
 .hud-controls { flex-shrink: 0; gap: var(--sp-1); }
 
+/* HUD: very narrow screens (≤560px) — squeeze everything smaller */
+@media (max-width: 560px) {
+  .game-hud {
+    padding: var(--sp-1) var(--sp-2);
+    gap: var(--sp-1);
+  }
+  .hud-group { gap: var(--sp-1); }
+  .hud-activity-name {
+    font-size: 0.65rem;
+    padding: 1px var(--sp-1);
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .hud-item {
+    padding: 2px var(--sp-1);
+    border-radius: var(--r-lg);
+  }
+  .hud-item__value { font-size: 0.85rem; }
+  .hud-item__label { font-size: 0.45rem; letter-spacing: 0; }
+  .hud-btn { width: 28px; height: 28px; }
+  .hud-btn svg { width: 14px; height: 14px; }
+  .hud-controls { gap: 4px; }
+  /* Stars in HUD: smaller on tiny screens */
+  .sidebar-stars__star svg { width: 14px; height: 14px; }
+}
+
 /* Question panel mobile */
 .question-text__prompt { font-size: var(--fs-lg); }
 .question-number-badge { width: 30px; height: 30px; font-size: var(--fs-xs); }
@@ -522,4 +550,110 @@ html, body { overflow-x: hidden; width: 100%; }
   .back-link { font-size: var(--fs-xs); }
   .page-header__subtitle { font-size: var(--fs-sm); }
   .progress-summary__divider { display: none; }
+}
+
+/* ─────────────────────────────────────────────────────────────
+   SHORT-SCREEN / LANDSCAPE PHONE  (max-height: 600px)
+   Switch game to a side-by-side layout so all panels are
+   visible without scrolling on short viewports.
+   ───────────────────────────────────────────────────────────── */
+@media (max-height: 600px) {
+
+  /* Shrink the HUD so it takes less vertical space */
+  .game-hud {
+    padding: var(--sp-1) var(--sp-3);
+    min-height: unset;
+  }
+  .hud-item__value { font-size: var(--fs-base); }
+  .hud-item__label { font-size: 0.5rem; }
+  .hud-btn { width: 30px; height: 30px; }
+  .hud-btn svg { width: 16px; height: 16px; }
+
+  /* Switch game-main to a horizontal two-column layout */
+  .game-main {
+    display: grid !important;
+    grid-template-columns: 1fr auto;
+    grid-template-rows: 1fr auto;
+    grid-template-areas:
+      "abacus sidebar"
+      "question sidebar"
+      "progress progress";
+    min-height: calc(100dvh - 48px);
+    overflow: hidden;
+  }
+
+  /* Question panel — compact horizontal pill */
+  .game-panel--question {
+    grid-area: question;
+    order: unset;
+    margin: var(--sp-2) var(--sp-3);
+    padding: var(--sp-2) var(--sp-4);
+    border-radius: var(--r-xl);
+    width: auto;
+    max-width: 100%;
+  }
+  .question-text__label { display: none; }
+  .question-text__prompt { font-size: var(--fs-base); }
+  .question-number-badge { width: 28px; height: 28px; font-size: var(--fs-sm); }
+
+  /* Abacus — takes the left column */
+  .game-panel--abacus {
+    grid-area: abacus;
+    order: unset;
+    padding: var(--sp-2);
+    overflow: hidden;
+  }
+  .abacus-frame {
+    padding: var(--sp-3) var(--sp-4) var(--sp-4);
+  }
+  .abacus-rods {
+    min-height: 140px;
+    gap: var(--sp-3);
+  }
+  .bead { width: 36px; height: 36px; }
+  .rod-column__label { font-size: 0.55rem; }
+
+  /* Sidebar — right column, compact vertical stack */
+  .game-panel--sidebar {
+    grid-area: sidebar;
+    order: unset;
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    border-left: 1.5px solid var(--c-border) !important;
+    border-top: none !important;
+    padding: var(--sp-2) var(--sp-3);
+    width: 160px;
+    min-width: 140px;
+    overflow-y: auto;
+    gap: var(--sp-2) !important;
+  }
+  .current-number-display {
+    min-width: unset;
+    padding: var(--sp-2);
+    flex: none;
+    width: 100%;
+  }
+  .current-number-display__value { font-size: var(--fs-2xl); }
+  .current-number-display__label { font-size: 0.55rem; }
+  .game-actions {
+    flex: none;
+    width: 100%;
+    min-width: unset;
+    gap: var(--sp-1);
+  }
+  .game-actions .btn { font-size: var(--fs-xs); padding: var(--sp-2) var(--sp-3); min-height: 36px; }
+  .btn--submit { min-height: 40px; }
+  .sidebar-stars {
+    min-width: unset;
+    width: 100%;
+    flex: none;
+  }
+  .sidebar-stars__label { font-size: 0.55rem; }
+
+  /* Progress bar — full width at the bottom */
+  .game-panel--progress {
+    grid-area: progress;
+    order: unset;
+    padding: var(--sp-2) var(--sp-4);
+  }
 }

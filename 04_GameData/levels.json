@@ -21,7 +21,7 @@
     {
       "id": "intermediate",
       "label": "Intermediate",
-      "number_min": 0,
+      "number_min": 10,
       "number_max": 99,
       "active_rods": [
         "tens",
@@ -39,7 +39,7 @@
     {
       "id": "advanced",
       "label": "Advanced",
-      "number_min": 0,
+      "number_min": 100,
       "number_max": 999,
       "active_rods": [
         "hundreds",
